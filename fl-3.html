@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FL-3</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="script/main.js" async></script>
+    <script src="script/menu.js" async></script>
+    <script src="script/lenses-pl.js" async></script>
+    
+</head>
+<body class="container">
+    <!-- SVG DECLARATION -->
+    <svg class="svg-filter">
+        <defs>
+            <filter id="sofGlow" height="300%" width="300%" x="-75%" y="-75%" filterUnits="userSpaceOnUse">
+                <!-- Thicken out the original shape -->
+                <feMorphology operator="dilate" radius="1.5" in="SourceAlpha" result="thicken" />
+            
+                <!-- Use a gaussian blur to create the soft blurriness of the glow -->
+                <feGaussianBlur in="thicken" stdDeviation="5" result="blurred" />
+            
+                <!-- Change the colour -->
+                <feFlood flood-color="rgb(179,18,132)" result="glowColor" />
+            
+                <!-- Color in the glows -->
+                <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored" />
+                <!--	Layer the effects together -->
+                <feMerge>
+                    <feMergeNode in="softGlow_colored" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+            <linearGradient id="grad-pink-blue" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:rgb(179,18,132);stop-opacity:1" />
+                <stop offset="50%" style="stop-color:rgb(179,18,132);stop-opacity:0.85" />
+                <stop offset="100%" style="stop-color:rgb(0,51,102);stop-opacity:0.70" />
+            </linearGradient>
+            <linearGradient id="grad-blue-black" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:rgb(0,51,102);stop-opacity:1" />
+                <stop offset="50%" style="stop-color:rgb(0,51,102);stop-opacity:0.55" />
+                <stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:0" />
+            </linearGradient>
+            <linearGradient id="grad-pink-blue--vert" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:rgb(179,18,132);stop-opacity:1" />
+                <stop offset="50%" style="stop-color:rgb(179,18,132);stop-opacity:0.85" />
+                <stop offset="100%" style="stop-color:rgb(0,51,102);stop-opacity:0.70" />
+            </linearGradient>
+        </defs>
+    </svg>
+    <svg display="none">
+        <!-- preserveAspectRatio="none" -->
+        <symbol id="honey-cell" viewBox="0 0 144.08 170.64" >
+            <polygon class="honeycell"
+                points="3.5 44.69 3.5 125.94 72.04 166.57 140.58 125.94 140.58 44.69 72.04 4.07 3.5 44.69" />
+        </symbol>
+
+        <symbol id="nav-icon" viewBox="0 0 48.5 152">
+            <polyline class="svg-prev" points="48.5 152 48.5 0 34.19 0 0 76 34.19 152 48.5 152" />
+        </symbol>
+        <symbol id="nav-icon--next" viewBox="0 0 48.5 152">
+            <path class="svg-next" d="m0 152v-152h14.31l34.19 76-34.19 76z"/>
+        </symbol>
+    </svg>
+    
+    <header class="header-main header-main--lights">
+        <figure class="logo-header--light">
+            <a href="index.html">
+                <img src="img/svg/logo-dark.svg" alt="SETO COMPANY LOGO" class="logo">
+            </a>
+        </figure>
+    
+        <!-- menu icon -->
+        <figure class="menu-icon">
+            <div></div>
+        </figure>
+    
+        <!-- Modal window -->
+        <nav class="nav nav-header">
+            <ul class="nav-list nav-list--header">
+                <li class="nav-item nav-item--header"><a href="index.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>главная</span>
+                    </a></li>
+                <li class="nav-item nav-item--header"><a href="about.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>о компании</span>
+                    </a></li>
+                <li class="nav-item nav-item--header"><a href="street-light.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>Уличное освещение</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="industrial-light.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>Пром освещение</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="phito-light.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>Фитосвет</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="control-system.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>АСУНО</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="stands.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>Опоры</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="services.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>услуги</span>
+                    </a></li>
+                <li class="nav-item nav-item--header"><a href="contacts.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>контакты</span>
+                    </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main--lights">
+
+        <section class="hero--lights">
+            <!-- decor -->
+            <figure class="hero-corner--lights">
+                <img src="img/svg/decor-corner--grad.svg" alt="">
+            </figure>
+            <figure class="hero-corner--lights corner--rotateX180">
+                <img src="img/svg/decor-corner--grad.svg" alt="">
+            </figure>
+            <figure class="hero-corner--lights corner--rotateY180">
+                <img src="img/svg/decor-corner--grad.svg" alt="">
+            </figure>
+            <figure class="hero-corner--lights corner--rotateX180 corner--rotateY180">
+                <img src="img/svg/decor-corner--grad.svg" alt="">
+            </figure>
+            <div class="hero-back"></div>
+            <figure class="hero-cell">
+                <svg class="honeycell--large" viewBox="0 0 194.08 170.64">
+                    <use href="#honey-cell">
+                </svg>
+            </figure>
+            <div class="hero-back--cover"></div>
+            <header class="hero-header--lights">
+                <h3 class="heading-3 hero-title">Светодиодный фито-светильник</h3>
+                <h1 class="heading-1 hero-title heading-1--lights">FL-3</h1>
+                <h3 class="heading-3 hero-title">150-300W</h3>
+            </header>
+
+            <div class="hero-back--nav"></div>
+
+            <div class="hero-images-container">
+                <img 
+                    srcset="
+                            img/PL-3-1.png 2000w,
+                            img/PL-3-1@0,75x.png 1500w,
+                            img/PL-3-1@0,5x.png 1000w,
+                            img/PL-3-1@0,25x.png 529w
+                            "
+                    sizes="
+                            (max-width: 768px) 78.8vw,
+                            47.7vw
+                            "
+                    src="img/PL-3-1.png"
+                    alt="Led undustrial light pl-3" class="hero-image active visible" data-block="1">
+                <img 
+                    srcset="
+                            img/PL-3-2.png 2000w,
+                            img/PL-3-2@0,75x.png 1500w,
+                            img/PL-3-2@0,5x.png 1000w,
+                            img/PL-3-2@0,25x.png 529w
+                            "
+                    sizes="
+                            (max-width: 768px) 78.8vw,
+                            47.7vw
+                            "
+                    src="img/PL-3-2.png"
+                    alt="Led undustrial light pl-3" class="hero-image" data-block="2">
+                <img 
+                    srcset="
+                            img/PL-3-3.png 2000w,
+                            img/PL-3-3@0,75x.png 1500w,
+                            img/PL-3-3@0,5x.png 1000w,
+                            img/PL-3-3@0,25x.png 529w
+                            "
+                    sizes="
+                            (max-width: 768px) 78.8vw,
+                            47.7vw
+                            "
+                    src="img/PL-3-3.png"
+                    alt="Led undustrial light pl-3" class="hero-image" data-block="3">
+                <img 
+                    srcset="
+                            img/PL-3-4.png 2000w,
+                            img/PL-3-4@0,75x.png 1500w,
+                            img/PL-3-4@0,5x.png 1000w,
+                            img/PL-3-4@0,25x.png 529w
+                            "
+                    sizes="
+                            (max-width: 768px) 78.8vw,
+                            47.7vw
+                            "
+                    src="img/PL-3-4.png"
+                    alt="Led undustrial light pl-3" class="hero-image" data-block="4">
+                <img 
+                    srcset="
+                            img/PL-3-5.png 2000w,
+                            img/PL-3-5@0,75x.png 1500w,
+                            img/PL-3-5@0,5x.png 1000w,
+                            img/PL-3-5@0,25x.png 529w
+                            "
+                    sizes="
+                            (max-width: 768px) 78.8vw,
+                            47.7vw
+                            "
+                    src="img/PL-3-5.png"
+                    alt="Led undustrial light pl-3" class="hero-image" data-block="5">
+                <img 
+                    srcset="
+                            img/PL-3-6.png 2000w,
+                            img/PL-3-6@0,75x.png 1500w,
+                            img/PL-3-6@0,5x.png 1000w,
+                            img/PL-3-6@0,25x.png 529w
+                            "
+                    sizes="
+                            (max-width: 768px) 78.8vw,
+                            47.7vw
+                            "
+                    src="img/PL-3-6.png"
+                    alt="Led undustrial light pl-3" class="hero-image" data-block="6">
+            </div>
+
+            <nav class="nav-hero hero-navigation">
+                <ul class="nav-list nav-list--hero">
+                    <li class="nav-item nav-item--hero" data-block="prev">
+                        <figure class="nav-icon--next">
+                            <img src="img/svg/decor-vert--grad.svg" alt="">
+                        </figure>
+                    </li>
+                    <li class="nav-item nav-item--hero active" data-block="1">
+                        <figure class="nav-icon--honeycell">
+                            <svg class="honeycell--pink" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                    </li>
+                    <li class="nav-item nav-item--hero" data-block="2">
+                        <figure class="nav-icon--honeycell">
+                            <svg class="honeycell--pink" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                    </li>
+                    <li class="nav-item nav-item--hero" data-block="3">
+                        <figure class="nav-icon--honeycell">
+                            <svg class="honeycell--pink" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                    </li>
+                    <li class="nav-item nav-item--hero" data-block="4">
+                        <figure class="nav-icon--honeycell">
+                            <svg class="honeycell--pink" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                    </li>
+                    <li class="nav-item nav-item--hero" data-block="5">
+                        <figure class="nav-icon--honeycell">
+                            <svg class="honeycell--pink" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                    </li>
+                    <li class="nav-item nav-item--hero" data-block="6">
+                        <figure class="nav-icon--honeycell">
+                            <svg class="honeycell--pink" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                    </li>
+            
+                    <li class="nav-item nav-item--hero" data-block="next">
+                        <figure class="nav-icon--next">
+                            <img src="img/svg/decor-vert--grad-2.svg" alt="">
+                        </figure>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="hero-back--desc"></div>
+            <div class="hero-description">
+                <p class="paragraph paragraph--hero"><span>Применение: </span>досвечивание сельскохозяйственных культур в тепличных комплексах круглогодичного цикла выращивания</p>
+                <p class="paragraph paragraph--hero"><span>Рекомендуемая высота установки: </span>150W-300W 3-6 метров</p>
+            </div>
+        </section>
+
+        <aside class="side-nav side-nav--lights">
+
+            <nav class="nav-description">
+                <ul class="nav-list nav-list--description">
+                    <li class="nav-item nav-item--description active" data-index="1">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--description">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 185.64" >
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--description">
+                            <svg class="honeycell--pink honeycell--pink-filter" viewBox="0 0 144.08 185.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <h4 class="heading-4 nav-description__title">Технические характеристики</h4>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section class="description">
+            <div class="description-block description-block--tech" data-index="1">
+                <!-- decor -->
+                <figure class="corner-decoration description-block__corner--reverse">
+                    <img src="img/svg/decor-corner--grad.svg" alt="">
+                </figure>
+                <figure class="corner-decoration description-block__corner">
+                    <img src="img/svg/decor-corner--grad.svg" alt="">
+                </figure>
+
+                <ul class="description-list description-list--tech">
+                    <li class="description-item--tech">
+                        <h5 class="heading-5 heading-5--tech">Корпус: </h5>
+                        <p class="paragraph paragraph--tech">алюминиевый, изготовлен путем литья под давлением</p>
+                    </li>
+                    <li class="description-item--tech">
+                        <h5 class="heading-5 heading-5--tech">Цвет корпуса: </h5>
+                        <p class="paragraph paragraph--tech">белый, черный, серый и т.д.</p>
+                    </li>
+                    <li class="description-item--tech">
+                        <h5 class="heading-5 heading-5--tech">Материал оптической линзы: </h5>
+                        <p class="paragraph paragraph--tech">боросиликатное стекло</p>
+                    </li>
+                    <li class="description-item--tech">
+                        <h5 class="heading-5 heading-5--tech">Светопропускная способность линзы: </h5>
+                        <p class="paragraph paragraph--tech">≥95%</p>
+                    </li>
+                    <li class="description-item--tech">
+                        <h5 class="heading-5 heading-5--tech">Напряжение сети: </h5>
+                        <p class="paragraph paragraph--tech">176 ~ 264 В</p>
+                    </li>
+                    <li class="description-item--tech">
+                        <h5 class="heading-5 heading-5--tech">IP Защита: </h5>
+                        <p class="paragraph paragraph--tech">не ниже IP65</p>
+                    </li>
+                    <li class="description-item--tech">
+                        <h5 class="heading-5 heading-5--tech">Мощность: </h5>
+                        <p class="paragraph paragraph--tech">150-300 Вт</p>
+                    </li>
+                    <li class="description-item--tech">
+                        <h5 class="heading-5 heading-5--tech">Рабочая температура: </h5>
+                        <p class="paragraph paragraph--tech">-40℃ ~ 60℃</p>
+                    </li>
+                    <li class="description-item--tech">
+                        <h5 class="heading-5 heading-5--tech">CRI: </h5>
+                        <p class="paragraph paragraph--tech">≥80</p>
+                    </li>
+                    <li class="description-item--tech">
+                        <h5 class="heading-5 heading-5--tech">Эффективность светодиода: </h5>
+                        <p class="paragraph paragraph--tech">120 lm/W ~ 160 lm/W</p>
+                    </li>
+                    <li class="description-item--tech">
+                        <h5 class="heading-5 heading-5--tech">Длина волны: </h5>
+                        <p class="paragraph paragraph--tech">380-840 нм</p>
+                    </li>
+                    <li class="description-item--tech">
+                        <h5 class="heading-5 heading-5--tech">Срок службы: </h5>
+                        <p class="paragraph paragraph--tech">≥100 000 часов</p>
+                    </li>
+                    <li class="description-item--tech">
+                        <h5 class="heading-5 heading-5--tech">Гарантийный срок: </h5>
+                        <p class="paragraph paragraph--tech">5-7 лет</p>
+                    </li>
+                </ul>
+            </div>
+
+    </main>
+
+    <footer class="footer">
+        <nav class="nav-footer">
+            <ul class="nav-list nav-list--footer footer-navigation">
+                <li class="nav-item nav-item--footer"><a href="index.html" class="nav-link nav-link--footer">Главная</a>
+                </li>
+                <li class="nav-item nav-item--footer"><a href="about.html" class="nav-link nav-link--footer">О компании</a>
+                </li>
+                <li class="nav-item nav-item--footer"><a href="services.html" class="nav-link nav-link--footer">Услуги</a>
+                </li>
+                <li class="nav-item nav-item--footer"><a href="contacts.html" class="nav-link nav-link--footer">Контакты</a>
+                </li>
+                <li class="nav-item nav-item--footer"><a href="street-light.html" class="nav-link nav-link--footer">Уличное
+                        освещение</a></li>
+                <li class="nav-item nav-item--footer"><a href="industrial-light.html"
+                        class="nav-link nav-link--footer">Промышленное освещение</a></li>
+                <li class="nav-item nav-item--footer"><a href="phito-light.html"
+                        class="nav-link nav-link--footer">Фитосвет</a></li>
+                <li class="nav-item nav-item--footer"><a href="stands.html" class="nav-link nav-link--footer">Опоры уличного
+                        освещения</a></li>
+                <li class="nav-item nav-item--footer"><a href="control-system.html"
+                        class="nav-link nav-link--footer">Автоматизированная система управления освещением</a></li>
+            </ul>
+        </nav>
+        <address class="footer-address">
+            <span class="footer-text">Адрес: 150044, г.Ярославль пр.Октября, д.93</span>
+            <span class="footer-text"><a class="nav-link nav-link--footer" href=tel:+74852663720" class="footer-link">+7
+                    (4852) 66-37-20</a></span>
+            <span class="footer-text"><a class="nav-link nav-link--footer" href="mailto:info@setolight.ru"
+                    class="footer-link">info@setolight.ru</a></span>
+        </address>
+        <figure class="footer-line"></figure>
+        <div class="footer-copyright">
+            <p class="footer-text">&copy; 2017 - 2019 сэтогрупп</p>
+        </div>
+    
+    </footer>
+</body>
+</html>

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>АСУНО "СЭТО"</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="script/main.js" async></script>
+    <script src="script/menu.js" async></script>
+</head>
+
+<body class="container">
+    <!-- SVG DECLARATION -->
+    <svg class="svg-filter">
+        <defs>
+            <filter id="sofGlow" height="300%" width="300%" x="-75%" y="-75%" filterUnits="userSpaceOnUse">
+                <!-- Thicken out the original shape -->
+                <feMorphology operator="dilate" radius="1.5" in="SourceAlpha" result="thicken" />
+
+                <!-- Use a gaussian blur to create the soft blurriness of the glow -->
+                <feGaussianBlur in="thicken" stdDeviation="5" result="blurred" />
+
+                <!-- Change the colour -->
+                <feFlood flood-color="rgb(179,18,132)" result="glowColor" />
+
+                <!-- Color in the glows -->
+                <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored" />
+                <!--	Layer the effects together -->
+                <feMerge>
+                    <feMergeNode in="softGlow_colored" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+            <linearGradient id="gradient-stroke" y1="52.91" x2="91.64" y2="52.91" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#003068" stop-opacity="0.9" />
+                <stop offset="1" stop-color="#d00a87" stop-opacity="0.7" />
+            </linearGradient>
+            <linearGradient id="gradient-stroke-2" y1="52.91" x2="91.64" y2="52.91" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#d00a87" stop-opacity="0.9" />
+                <stop offset="1" stop-color="#003068" stop-opacity="0.7" />
+            </linearGradient>
+            <linearGradient id="gradient-stroke-3" y1="52.91" x2="91.64" y2="52.91" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#d00a87" stop-opacity="1" />
+                <stop offset="1" stop-color="#003068" stop-opacity="1" />
+            </linearGradient>
+            <linearGradient id="gradient-fill" y1="52.91" x2="91.64" y2="52.91" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#003366" stop-opacity="0.9" />
+                <stop offset="1" stop-color="#003366" stop-opacity="0" />
+            </linearGradient>
+
+            <mask id="mask" viewBox="0 0 300 300">
+                <g data-name="Layer 1">
+                    <g>
+                        <polygon
+                            points="179.21 166.6 179.21 134.98 206.6 119.17 233.99 134.98 233.99 166.6 206.6 182.41 179.21 166.6" />
+                        <path
+                            d="M206.6,119.34l27.24,15.72v31.46L206.6,182.24l-27.24-15.72V135.06l27.24-15.72m0-.35-27.54,15.9v31.8l27.54,15.9,27.54-15.9v-31.8L206.6,119Z"
+                            transform="translate(0 0)" />
+                    </g>
+                    <g>
+                        <polygon points="94.63 117 94.63 85.37 122.02 69.56 149.41 85.37 149.41 117 122.02 132.81 94.63 117" />
+                        <path
+                            d="M122,69.73l27.24,15.73v31.45L122,132.64,94.78,116.91V85.46L122,69.73m0-.35L94.48,85.28v31.8L122,133l27.54-15.9V85.28L122,69.38Z"
+                            transform="translate(0 0)" />
+                    </g>
+                    <g>
+                        <polygon points="151.23 117 151.23 85.37 178.62 69.56 206.01 85.37 206.01 117 178.62 132.81 151.23 117" />
+                        <path
+                            d="M178.62,69.73l27.24,15.73v31.45l-27.24,15.73-27.24-15.73V85.46l27.24-15.73m0-.35-27.54,15.9v31.8L178.62,133l27.54-15.9V85.28l-27.54-15.9Z"
+                            transform="translate(0 0)" />
+                    </g>
+                    <g>
+                        <polygon
+                            points="122.61 166.6 122.61 134.98 150 119.17 177.39 134.98 177.39 166.6 150 182.41 122.61 166.6" />
+                        <path
+                            d="M150,119.34l27.24,15.72v31.46L150,182.24l-27.24-15.72V135.06L150,119.34m0-.35-27.54,15.9v31.8L150,182.59l27.54-15.9v-31.8L150,119Z"
+                            transform="translate(0 0)" />
+                    </g>
+                    <g>
+                        <polygon points="66.01 166.6 66.01 134.98 93.4 119.17 120.79 134.98 120.79 166.6 93.4 182.41 66.01 166.6" />
+                        <path
+                            d="M93.4,119.34l27.24,15.72v31.46L93.4,182.24,66.16,166.52V135.06L93.4,119.34m0-.35-27.54,15.9v31.8l27.54,15.9,27.54-15.9v-31.8L93.4,119Z"
+                            transform="translate(0 0)" />
+                    </g>
+                    <g>
+                        <polygon
+                            points="150.59 216.14 150.59 184.51 177.98 168.7 205.37 184.51 205.37 216.14 177.98 231.95 150.59 216.14" />
+                        <path
+                            d="M178,168.87l27.24,15.73v31.45L178,231.78l-27.24-15.73V184.6L178,168.87m0-.34-27.54,15.9v31.8L178,232.13l27.54-15.9v-31.8L178,168.53Z"
+                            transform="translate(0 0)" />
+                    </g>
+                    <g>
+                        <polygon
+                            points="93.99 216.14 93.99 184.51 121.38 168.7 148.77 184.51 148.77 216.14 121.38 231.95 93.99 216.14" />
+                        <path
+                            d="M121.38,168.87l27.24,15.73v31.45l-27.24,15.73L94.14,216.05V184.6l27.24-15.73m0-.34-27.54,15.9v31.8l27.54,15.89,27.54-15.89v-31.8l-27.54-15.9Z"
+                            transform="translate(0 0)" />
+                    </g>
+                </g>
+            </mask>
+        </defs>
+    </svg>
+    <svg display="none">
+        <symbol id="honey-cell" viewBox="0 0 144.08 170.64">
+            <polygon class="honeycell"
+                points="3.5 44.69 3.5 125.94 72.04 166.57 140.58 125.94 140.58 44.69 72.04 4.07 3.5 44.69" />
+        </symbol>
+        <symbol id="decor-line" viewBox="0 0 1121.46 803.98">
+            <path class="line"
+                d="M731.42,0H2.63A2.63,2.63,0,0,0,0,2.63L.75,803h0l784.53,1a57.13,57.13,0,0,0,30.42-8.73l279-175a57.11,57.11,0,0,0,17.61-79.4L779.38,26.1A57.14,57.14,0,0,0,731.42,0Z" />
+        </symbol>
+        <symbol id="decor-features-1" viewBox="0 0 150 450" preserveAspectRatio="none">
+            <polyline class="line-2" points="12.4 224.5 74 224.5 74 223.83 74 45.83 74.67 45 111.67 45" />
+            <path class="line-2" d="M12.5,224.5a5,5,0,1,1-5-5,5,5,0,0,1,5,5" />
+            <rect class="no-fill" width="150" height="450" />
+        </symbol>
+        <symbol id="decor-features-2" viewBox="0 0 150 450" preserveAspectRatio="none">
+            <path class="line-2" d="M12.5,224.5a5,5,0,1,1-5-5,5,5,0,0,1,5,5" />
+            <polyline class="line-2" points="12.4 224.5 74 224.5 74 223.83 74 135.83 74.67 135 111.67 135" />
+            <rect class="no-fill" width="150" height="450" />
+        </symbol>
+        <symbol id="decor-features-3" viewBox="0 0 150 450" preserveAspectRatio="none">
+            <path class="line-2" d="M12.5,224.5a5,5,0,1,1-5-5,5,5,0,0,1,5,5" />
+            <rect class="no-fill" width="150" height="450" />
+            <line class="line-2" x1="12.5" y1="224.4" x2="111.5" y2="224.4" />
+        </symbol>
+        <symbol id="decor-features-4" viewBox="0 0 150 450" preserveAspectRatio="none">
+            <path class="line-2" d="M12.5,224.5a5,5,0,1,1-5-5,5,5,0,0,1,5,5" />
+            <polyline class="line-2" points="12.4 224.5 74 224.5 74 224.83 74 313.53 74.67 314 111.67 314" />
+            <rect class="no-fill" width="150" height="450" />
+        </symbol>
+        <symbol id="decor-features-5" viewBox="0 0 150 450" preserveAspectRatio="none">
+            <path class="line-2" d="M12.5,224.5a5,5,0,1,1-5-5,5,5,0,0,1,5,5" />
+            <polyline class="line-2" points="12.4 224.5 74 224.5 74 224.83 74 403.53 74.67 404 111.67 404" />
+            <rect class="no-fill" width="150" height="450" />
+        </symbol>
+        <symbol id="features-cell" viewBox="0 0 89.6 103.46">
+            <polygon class="features" points="88.1 26.73 88.1 76.73 44.8 101.73 1.5 76.73 1.5 26.73 44.8 1.73 88.1 26.73" />
+        </symbol>
+        <symbol id="thumb" viewBox="0 0 300 300">   
+            <path
+                d="M276,199.47c5.27-6.72,7.8-13.93,7.47-21.35a32.82,32.82,0,0,0-7-18.5c3.5-8.71,4.84-22.43-6.83-33.07-8.55-7.8-23.07-11.3-43.18-10.33a168.74,168.74,0,0,0-26.46,3.39H200c-2.69.48-5.54,1.07-8.44,1.72-.22-3.44.37-12,6.72-31.25,7.53-22.91,7.1-40.44-1.4-52.16-8.93-12.32-23.18-13.29-27.37-13.29a13.5,13.5,0,0,0-10.38,4.73c-6,6.94-5.27,19.74-4.52,25.66-7.1,19-27,65.72-43.83,78.68a5.57,5.57,0,0,0-.86.75,57.91,57.91,0,0,0-10.54,15.81,22.24,22.24,0,0,0-10.65-2.69H55.91A22.39,22.39,0,0,0,33.54,170v87.39a22.39,22.39,0,0,0,22.37,22.37H88.72a22.34,22.34,0,0,0,12.91-4.08l12.63,1.5A540.88,540.88,0,0,0,186,281.06c6.4.48,12.43.75,18,.75a120.37,120.37,0,0,0,25-2.26c16.46-3.49,27.7-10.48,33.4-20.76A32.93,32.93,0,0,0,266,238.2c10.71-9.69,12.59-20.39,12.21-27.92A36.33,36.33,0,0,0,276,199.47ZM55.91,265.19a7.86,7.86,0,0,1-7.85-7.85V169.89A7.86,7.86,0,0,1,55.91,162H88.72a7.86,7.86,0,0,1,7.85,7.85v87.4a7.86,7.86,0,0,1-7.85,7.85H55.91Zm206.36-72a7.23,7.23,0,0,0-1,8.77,22.33,22.33,0,0,1,2.48,9c.37,7-3,13.28-10.12,18.61a7.33,7.33,0,0,0-2.47,8.28c0,.05,2.31,7.15-1.45,13.87-3.6,6.46-11.62,11.08-23.77,13.66-9.74,2.1-23,2.48-39.21,1.19H186c-34.58.75-69.54-3.77-69.92-3.82h0l-5.43-.65a22.93,22.93,0,0,0,.48-4.73V169.89a22.63,22.63,0,0,0-1-6.67,45,45,0,0,1,10-18.44c24.15-19.15,47.76-83.74,48.78-86.54a6.84,6.84,0,0,0,.33-3.6c-.92-6-.6-13.39.69-15.59,2.85.05,10.55.86,15.17,7.26,5.49,7.58,5.27,21.13-.65,39.09-9,27.38-9.78,41.79-2.63,48.14a11.74,11.74,0,0,0,11.72,2.1c3.28-.76,6.4-1.4,9.36-1.89.22-.05.49-.1.7-.16,16.51-3.6,46.09-5.81,56.36,3.55,8.72,8,2.53,18.5,1.83,19.63a7.19,7.19,0,0,0,1.29,9.36c.06.05,5.7,5.38,6,12.53C269.21,183.45,267,188.34,262.27,193.18Z"
+                class="stroke-white" />
+        </symbol>
+        <symbol id="options-control" viewBox="0 0 300 300">
+            <path class="stroke-white"
+                d="M244.82,144.86a6.68,6.68,0,0,0-13.32,1c.16,2.28.24,4.61.24,6.93a96.58,96.58,0,1,1-96.57-96.57,95.65,95.65,0,0,1,57.92,19.3,6.68,6.68,0,0,0,8-10.68,108.9,108.9,0,0,0-65.94-22A109.94,109.94,0,1,0,245.1,152.75C245.1,150.11,245,147.46,244.82,144.86Z" />
+            <path class="stroke-white"
+                d="M267.61,57.91a26.1,26.1,0,0,0-36.85,0l-96.24,96.25L100.4,120a26.06,26.06,0,0,0-36.85,36.85l58.76,58.76a17.29,17.29,0,0,0,24.42,0L267.61,94.77A26.1,26.1,0,0,0,267.61,57.91Zm-9.44,27.41L137.28,206.21a3.92,3.92,0,0,1-5.53,0L73,147.45a12.7,12.7,0,1,1,18-18l35.1,35.1a12,12,0,0,0,16.93,0l97.23-97.23a12.7,12.7,0,0,1,18,18Z" />
+        </symbol>
+        <symbol id="time" viewBox="0 0 300 300">
+            <g class="stroke-white">
+                <path
+                    d="m273.77 163a98.57 98.57 0 0 0 -76.63-86.42v-12.4a16.61 16.61 0 0 0 -4-32.72h-35.14a16.61 16.61 0 0 0 -4 32.72v12.44a98.58 98.58 0 0 0 -56.38 35.86h-.37-34.83a4.88 4.88 0 0 0 0 9.76h28.58a98.27 98.27 0 0 0 -8.72 18.76h-53.14a4.89 4.89 0 0 0 0 9.77h50.38a99.06 99.06 0 0 0 -2.42 18.76h-21.59a4.89 4.89 0 1 0 0 9.77h21.74a99.83 99.83 0 0 0 3 18.77h-31.58a4.88 4.88 0 0 0 0 9.76h34.75a98.61 98.61 0 0 0 82.46 63.17c3.22.31 6.45.47 9.67.47a98.81 98.81 0 0 0 53.83-15.91 4.88 4.88 0 1 0 -5.33-8.18 88.86 88.86 0 1 1 26.18-26.21 4.88 4.88 0 1 0 8.19 5.32 98.94 98.94 0 0 0 15.35-63.49zm-122.63-114.93a6.84 6.84 0 0 1 6.86-6.84h35.16a6.84 6.84 0 1 1 0 13.67h-35.16a6.84 6.84 0 0 1 -6.86-6.83zm12.59 26.87v-10.27h23.64v10.25a99.44 99.44 0 0 0 -23.64.02z" />
+                <path d="m241.92 234.22a4.88 4.88 0 0 0 -4.92 4.88 4.88 4.88 0 0 0 9.76 0 4.88 4.88 0 0 0 -4.88-4.88z" />
+                <path
+                    d="m175.63 97.06a75.75 75.75 0 1 0 75.74 75.75 75.83 75.83 0 0 0 -75.74-75.75zm0 141.73a66 66 0 1 1 66-66 66.06 66.06 0 0 1 -66 66z" />
+                <path
+                    d="m206.51 135-24.18 24.2a15.19 15.19 0 0 0 -13.41 0l-10.82-10.82a4.88 4.88 0 1 0 -6.91 6.9l10.81 10.83a15.18 15.18 0 1 0 27.21 0l23.48-23.48.71-.71a4.88 4.88 0 0 0 -6.91-6.9zm-30.88 43.2a5.41 5.41 0 1 1 5.4-5.41 5.41 5.41 0 0 1 -5.4 5.43z" />
+                <path d="m227.83 168h-4.52a4.88 4.88 0 0 0 0 9.76h4.52a4.88 4.88 0 1 0 0-9.76z" />
+                <path d="m127.94 167.87h-4.52a4.88 4.88 0 0 0 0 9.76h4.52a4.88 4.88 0 0 0 0-9.76z" />
+                <path d="m175.68 130a4.89 4.89 0 0 0 4.89-4.88v-4.52a4.89 4.89 0 0 0 -9.77 0v4.53a4.89 4.89 0 0 0 4.88 4.87z" />
+                <path d="m175.57 215.61a4.89 4.89 0 0 0 -4.89 4.89v4.5a4.89 4.89 0 0 0 9.77 0v-4.5a4.89 4.89 0 0 0 -4.88-4.89z" />
+                <path d="m29.14 198.06a4.88 4.88 0 1 0 3.45 1.43 4.88 4.88 0 0 0 -3.45-1.43z" />
+            </g>
+        </symbol>
+        <symbol id="technology" viewBox="0 0 300 300">
+            <path class="stroke-white"
+                d="M262.12,122.71H238.73a9,9,0,0,1-6.35-15.33l16.54-16.54a12.87,12.87,0,0,0,0-18.2L227.84,51.56a13.18,13.18,0,0,0-18.21,0L193.1,68.09a9,9,0,0,1-15.33-6.35V38.35A12.89,12.89,0,0,0,164.9,25.48H135.08a12.89,12.89,0,0,0-12.87,12.87V61.74a9,9,0,0,1-15.32,6.35L90.35,51.56a13.18,13.18,0,0,0-18.21,0L51.07,72.64a12.87,12.87,0,0,0,0,18.2L67.6,107.38a9,9,0,0,1-6.35,15.33H37.86A12.88,12.88,0,0,0,25,135.58v29.81a12.88,12.88,0,0,0,12.87,12.87H61.25a9,9,0,0,1,6.35,15.33L51.07,210.12a12.88,12.88,0,0,0,0,18.21l21.07,21.08a13.17,13.17,0,0,0,18.21,0l16.54-16.54a9,9,0,0,1,15.32,6.35v23.39a12.89,12.89,0,0,0,12.87,12.87h29.81a12.88,12.88,0,0,0,12.87-12.87V239.22a9,9,0,0,1,15.33-6.35l16.54,16.54a13.17,13.17,0,0,0,18.2,0l21.08-21.08a12.88,12.88,0,0,0,0-18.21l-16.53-16.53a9,9,0,0,1,6.35-15.33h23.39A12.88,12.88,0,0,0,275,165.39V135.58A12.88,12.88,0,0,0,262.12,122.71Zm3.61,42.68a3.61,3.61,0,0,1-3.61,3.61H238.73a18.24,18.24,0,0,0-12.9,31.14l16.54,16.53a3.62,3.62,0,0,1,0,5.11l-21.08,21.08a3.61,3.61,0,0,1-5.11,0l-16.53-16.53a18.24,18.24,0,0,0-31.14,12.89v23.39a3.61,3.61,0,0,1-3.61,3.61H135.08a3.61,3.61,0,0,1-3.61-3.61V239.22a18,18,0,0,0-11.26-16.85,18.34,18.34,0,0,0-7.09-1.44,18,18,0,0,0-12.79,5.39L83.8,242.86a3.61,3.61,0,0,1-5.11,0L57.61,221.78a3.62,3.62,0,0,1,0-5.11l16.54-16.53A18.24,18.24,0,0,0,61.25,169H37.86a3.61,3.61,0,0,1-3.61-3.61V135.58A3.61,3.61,0,0,1,37.86,132H61.25a18.24,18.24,0,0,0,12.9-31.14L57.61,84.29a3.62,3.62,0,0,1,0-5.11L78.69,58.1a3.62,3.62,0,0,1,5.11,0l16.53,16.54a18.24,18.24,0,0,0,31.14-12.9V38.35a3.61,3.61,0,0,1,3.61-3.61h29.81a3.62,3.62,0,0,1,3.62,3.61V61.74a18.24,18.24,0,0,0,31.14,12.9l16.53-16.53a3.62,3.62,0,0,1,5.11,0l21.08,21.08a3.62,3.62,0,0,1,0,5.11l-16.54,16.53A18.24,18.24,0,0,0,238.73,132h23.39a3.61,3.61,0,0,1,3.61,3.61Z" />
+            <path class="stroke-white"
+                d="M150,108.82a41.67,41.67,0,1,0,41.67,41.66A41.7,41.7,0,0,0,150,108.82Zm0,74.07a32.41,32.41,0,1,1,32.41-32.41A32.45,32.45,0,0,1,150,182.89Z" />
+        </symbol>
+        <symbol id="power" viewBox="0 0 300 300">
+            <path class="stroke-white"
+                d="M236.24,32H62.91L29.58,100.56V254.85A17.14,17.14,0,0,0,46.72,272H252.44a17.15,17.15,0,0,0,17.14-17.14V100.56ZM149.58,237.7,98.15,186.28h34.29V134.85h34.28v51.43H201ZM57,83.42,73.64,49.13H225.52l16.66,34.29Z" />
+        </symbol>
+        <symbol id="keys" viewBox="0 0 300 300">
+            <path class="stroke-white"
+                d="M189.55,24.89a85.88,85.88,0,0,0-80.27,116.28L27.21,223.25a6.25,6.25,0,0,0-1.83,4.42v44.91a6.25,6.25,0,0,0,6.26,6.25h37A6.21,6.21,0,0,0,73.06,277l12.48-12.45a6.26,6.26,0,0,0,1.83-4.43V244.81h15.3a6.25,6.25,0,0,0,6.25-6.25v-6.13h6.13a6.26,6.26,0,0,0,6.26-6.26V212.71h13.46a6.29,6.29,0,0,0,4.42-1.83l19.9-19.9A85.84,85.84,0,1,0,189.55,24.89Zm0,159.15a72.73,72.73,0,0,1-29.43-6.15,6.24,6.24,0,0,0-6.88,1.25l-.06.05-21,21H115.05a6.25,6.25,0,0,0-6.25,6.26v13.46h-6.13a6.25,6.25,0,0,0-6.26,6.25v6.13H81.12a6.26,6.26,0,0,0-6.26,6.26v19l-8.8,8.79H37.89v-8.84L114.34,181a5.63,5.63,0,0,0-8-8L37.89,241.56v-11.3l83.18-83.18.05-.06a6.25,6.25,0,0,0,1.25-6.88A73.33,73.33,0,1,1,189.55,184Z" />
+            <path class="stroke-white"
+                d="M215.67,61.16A23.43,23.43,0,1,0,239.1,84.59,23.46,23.46,0,0,0,215.67,61.16Zm0,34.35a10.92,10.92,0,1,1,10.92-10.92A10.93,10.93,0,0,1,215.67,95.51Z" />
+        </symbol>
+        <symbol id="protection" viewBox="0 0 300 300">
+            <path class="stroke-white"
+                d="M176.71,79.14a27.78,27.78,0,0,0-55.56,0v4.63a4.63,4.63,0,1,0,9.26,0V79.14a18.52,18.52,0,1,1,37,0v32.41H98v88H199.86v-88H176.71ZM190.6,190.25H107.26V120.81H190.6Z" />
+            <path class="stroke-white"
+                d="M148.93,130.07a18.48,18.48,0,0,0-4.63,36.38v9.92a4.63,4.63,0,0,0,9.26,0v-9.92a18.48,18.48,0,0,0-4.63-36.38Zm0,27.78a9.26,9.26,0,1,1,9.26-9.26A9.27,9.27,0,0,1,148.93,157.85Z" />
+            <path class="stroke-white"
+                d="M148.93,14.33a125.14,125.14,0,0,0-125,125c0,65.32,50.38,119.07,114.31,124.51L117.88,284.2a4.63,4.63,0,1,0,6.55,6.55L152.2,263a4.53,4.53,0,0,0,1-1.51,4.62,4.62,0,0,0,0-3.54,4.53,4.53,0,0,0-1-1.51l-27.77-27.77a4.63,4.63,0,0,0-6.55,6.54l19.28,19.28a115.74,115.74,0,1,1,94-33.69,4.63,4.63,0,1,0,6.58,6.52,125,125,0,0,0-88.81-213Z" />
+        </symbol>
+        <symbol id="comfort" viewBox="0 0 300 300">
+            <path
+                d="M81.79,103a5.44,5.44,0,0,0,6.88-3.46,63,63,0,0,1,122.78,19.78c0,26.84-12,42.88-21.68,55.76-7,9.37-13.1,17.47-13.1,27.29,0,.64,0,1.28,0,1.92H153.91v-12.5a5.44,5.44,0,1,0-10.88,0v12.5H120.29c0-.64,0-1.28,0-1.92,0-9.82-6.07-17.92-13.1-27.29S92,154.87,88,139.59a5.44,5.44,0,1,0-10.53,2.75c4.54,17.35,13.67,29.53,21,39.31,6.1,8.14,10.92,14.56,10.92,20.76,0,2.6.11,5.14.32,7.57v46c0,.15,0,.29,0,.44a.34.34,0,0,1,0,.1,5.58,5.58,0,0,0,.09.59h0a40.78,40.78,0,0,0,13.63,22.69,38.87,38.87,0,0,0,50,0,40.82,40.82,0,0,0,13.62-22.69h0a5.58,5.58,0,0,0,.09-.59.34.34,0,0,0,0-.1c0-.15,0-.29,0-.44V210c.21-2.43.33-5,.33-7.57,0-6.2,4.82-12.62,10.92-20.76,10.06-13.43,23.85-31.82,23.85-62.29a73.86,73.86,0,0,0-144-23.19A5.43,5.43,0,0,0,81.79,103Zm66.68,175a28.79,28.79,0,0,1-25.76-16.63h51.53A28.82,28.82,0,0,1,148.47,278.07Zm27.88-27.51H120.59V238.33h55.76Zm0-23.12H120.59V215.21h55.76Z"
+                class="stroke-white" fill-rule="evenodd" />
+            <path d="M148.47,35.75a5.44,5.44,0,0,0,5.44-5.45V15.81a5.44,5.44,0,1,0-10.88,0V30.3A5.45,5.45,0,0,0,148.47,35.75Z"
+                class="stroke-white" fill-rule="evenodd" />
+            <path d="M44.91,124.81h14.5a5.45,5.45,0,0,0,0-10.89H44.91a5.45,5.45,0,0,0,0,10.89Z" class="stroke-white"
+                fill-rule="evenodd" />
+            <path
+                d="M173.38,130.36a5.43,5.43,0,0,0-5.44-5.44H129a5.44,5.44,0,0,0,0,10.88h14v12.5a5.44,5.44,0,0,0,10.88,0V135.8h14A5.44,5.44,0,0,0,173.38,130.36Z"
+                class="stroke-white" fill-rule="evenodd" />
+            <path d="M81.65,60.24a5.44,5.44,0,1,0,7.69-7.7L79.09,42.29A5.44,5.44,0,0,0,71.4,50Z" class="stroke-white"
+                fill-rule="evenodd" />
+            <path
+                d="M71.49,201.79a5.45,5.45,0,0,0,3.85-1.6l10.25-10.25a5.44,5.44,0,0,0-7.69-7.69L67.64,192.5a5.45,5.45,0,0,0,3.85,9.29Z"
+                class="stroke-white" fill-rule="evenodd" />
+            <path
+                d="M211.45,61.83a5.41,5.41,0,0,0,3.84-1.59L225.55,50a5.44,5.44,0,0,0-7.7-7.7L207.6,52.54a5.44,5.44,0,0,0,3.85,9.29Z"
+                class="stroke-white" fill-rule="evenodd" />
+            <path
+                d="M211.35,182.25a5.44,5.44,0,0,0,0,7.69l10.26,10.25a5.44,5.44,0,0,0,7.69-7.69l-10.25-10.25A5.44,5.44,0,0,0,211.35,182.25Z"
+                class="stroke-white" fill-rule="evenodd" />
+            <path d="M237.53,124.81H252a5.45,5.45,0,0,0,0-10.89h-14.5a5.45,5.45,0,0,0,0,10.89Z" class="stroke-white"
+                fill-rule="evenodd" />
+            <path d="M148.47,164.62a5.44,5.44,0,1,0,5.44,5.44A5.46,5.46,0,0,0,148.47,164.62Z" class="stroke-white" fill-rule="evenodd" />
+            <path d="M85.5,119.36a5.45,5.45,0,1,0-5.44,5.45A5.46,5.46,0,0,0,85.5,119.36Z" class="stroke-white" fill-rule="evenodd" />
+        </symbol>
+        <symbol id="9" viewBox="0 0 300 300">
+            <path
+                d="M270.15,97.11a5.21,5.21,0,0,0,5.21-5.2V32a5.21,5.21,0,0,0-5.21-5.21h-59.9A5.21,5.21,0,0,0,205,32V56.75H95.67V32a5.21,5.21,0,0,0-5.21-5.21H30.56A5.2,5.2,0,0,0,25.36,32v59.9a5.2,5.2,0,0,0,5.2,5.2H55.3V206.49H30.56a5.2,5.2,0,0,0-5.2,5.21v59.89a5.2,5.2,0,0,0,5.2,5.21h59.9a5.21,5.21,0,0,0,5.21-5.21V246.85H205v24.74a5.21,5.21,0,0,0,5.21,5.21h59.9a5.21,5.21,0,0,0,5.21-5.21V211.7a5.21,5.21,0,0,0-5.21-5.21H245.41V97.11ZM35.77,86.7V37.22H85.25V86.7ZM85.25,266.39H35.77V216.91H85.25ZM205,211.7v24.74H95.67V211.7a5.21,5.21,0,0,0-5.21-5.21H65.72V97.11H90.46a5.2,5.2,0,0,0,5.21-5.2V67.17H205V91.91a5.2,5.2,0,0,0,5.21,5.2H235V206.49H210.25A5.21,5.21,0,0,0,205,211.7Zm59.9,5.21v49.48H215.46V216.91ZM215.46,86.7V37.22h49.48V86.7Z"
+                class="stroke-white" />
+        </symbol>
+        <symbol id="monitoring" viewBox="0 0 300 300">
+            <path
+                d="M275.32,226.94v-.11a2.83,2.83,0,0,0-.06-.42l0,0a2.54,2.54,0,0,0-.1-.37,1,1,0,0,1,0-.1,1.83,1.83,0,0,0-.14-.32s0,0,0-.06l-19.59-38.63V59.78a7.1,7.1,0,0,0-7.09-7.09H52.41a7.1,7.1,0,0,0-7.09,7.09v127.1L25.73,225.51s0,0,0,.06a3.09,3.09,0,0,0-.14.32.42.42,0,0,1,0,.1c0,.12-.07.25-.1.38v0c0,.14-.05.29-.07.43v.11a1.77,1.77,0,0,0,0,.23v9.29a8.43,8.43,0,0,0,8.42,8.42H266.92a8.43,8.43,0,0,0,8.42-8.42v-9.29A1.79,1.79,0,0,0,275.32,226.94ZM52.64,60H248V184.09H52.64Zm-1.41,131.4H249.44l16.27,32.09H185.25l-4-14.65a6.9,6.9,0,0,0-6.64-5.06H126.11a6.91,6.91,0,0,0-6.65,5.06l-4,14.65H35Zm126.42,32.09H123l3.41-12.39h47.81Zm90.36,13a1.09,1.09,0,0,1-1.09,1.09H33.76a1.09,1.09,0,0,1-1.1-1.09v-5.63H268Z"
+                class="stroke-white" />
+            <path
+                d="M236.56,128.16a3.66,3.66,0,0,0-3.67,3.66V169H67.78V131.82a3.67,3.67,0,0,0-7.33,0v38.72a5.76,5.76,0,0,0,5.75,5.74H234.48a5.75,5.75,0,0,0,5.74-5.74V131.82A3.66,3.66,0,0,0,236.56,128.16Z"
+                class="stroke-white" />
+            <path
+                d="M234.47,67.83H66.2a5.76,5.76,0,0,0-5.75,5.74v38.72a3.67,3.67,0,0,0,7.33,0V75.15H232.89v37.14a3.67,3.67,0,0,0,7.33,0V73.57A5.76,5.76,0,0,0,234.47,67.83Z"
+                class="stroke-white" />
+        </symbol>
+        <symbol id="scenarious" viewBox="0 0 300 300">
+            <path
+                d="M262.66,132.61H246V103.45a4.17,4.17,0,0,0-4.17-4.17h-41l-46.5-15.5v-9.5H183.5A12.5,12.5,0,0,0,196,61.78v-25a12.5,12.5,0,0,0-12.5-12.5H116.83a12.5,12.5,0,0,0-12.5,12.5v25a12.5,12.5,0,0,0,12.5,12.5H146v9.5L98.85,99.5a4.16,4.16,0,0,0,0,7.91L146,123.11v9.5H129.33a12.5,12.5,0,0,0-12.5,12.5v4.17h-25v-4.17a12.5,12.5,0,0,0-12.5-12.5H37.66a12.5,12.5,0,0,0-12.5,12.5v16.67a12.5,12.5,0,0,0,12.5,12.5H54.33v42a29.17,29.17,0,1,0,33,33h34a29.16,29.16,0,1,0,0-8.33h-34a29.17,29.17,0,0,0-24.67-24.67v-42H79.33a12.5,12.5,0,0,0,12.5-12.5v-4.17h25v4.17a12.5,12.5,0,0,0,12.5,12.5H171a12.5,12.5,0,0,0,12.5-12.5v-4.17h25v4.17a12.5,12.5,0,0,0,12.5,12.5h16.66v42a29.17,29.17,0,1,0,8.34,0v-42h16.66a12.5,12.5,0,0,0,12.5-12.5V145.11A12.5,12.5,0,0,0,262.66,132.61Zm-112.5,91.67a20.84,20.84,0,1,1-20.83,20.83A20.84,20.84,0,0,1,150.16,224.28ZM79.33,245.11A20.84,20.84,0,1,1,58.5,224.28,20.84,20.84,0,0,1,79.33,245.11Zm4.17-83.33A4.17,4.17,0,0,1,79.33,166H37.66a4.17,4.17,0,0,1-4.16-4.17V145.11A4.16,4.16,0,0,1,37.66,141H79.33a4.17,4.17,0,0,1,4.17,4.16ZM116.83,66a4.17,4.17,0,0,1-4.17-4.17v-25a4.17,4.17,0,0,1,4.17-4.17H183.5a4.17,4.17,0,0,1,4.16,4.17v25A4.17,4.17,0,0,1,183.5,66Zm-3.49,37.5,36.82-12.28L187,103.45l-36.83,12.27Zm61.82,58.33A4.17,4.17,0,0,1,171,166H129.33a4.17,4.17,0,0,1-4.17-4.17V145.11a4.17,4.17,0,0,1,4.17-4.16H171a4.16,4.16,0,0,1,4.16,4.16Zm33.34-16.67v4.17h-25v-4.17a12.5,12.5,0,0,0-12.5-12.5H154.33v-9.5l46.5-15.5h36.83v25H221A12.5,12.5,0,0,0,208.5,145.11Zm54.16,100a20.83,20.83,0,1,1-20.83-20.83A20.83,20.83,0,0,1,262.66,245.11Zm4.17-83.33a4.17,4.17,0,0,1-4.17,4.17H221a4.17,4.17,0,0,1-4.17-4.17V145.11A4.17,4.17,0,0,1,221,141h41.66a4.17,4.17,0,0,1,4.17,4.16Z"
+                class="stroke-white" />
+        </symbol>
+        <symbol id="call" viewBox="0 0 300 300">
+            <path d="M150,86.52a4.89,4.89,0,1,0,4.88,4.89A4.88,4.88,0,0,0,150,86.52Z" class="stroke-white" />
+            <path d="M69,174.41a4.88,4.88,0,1,0-4.89-4.88A4.88,4.88,0,0,0,69,174.41Z" class="stroke-white" />
+            <path
+                d="M189.06,37.7c-44,0-80,30.3-82.83,68.48C64.37,108.28,25,138.47,25,179.3c0,17.06,6.75,33.59,19,46.69a29.72,29.72,0,0,1-7.84,28,4.88,4.88,0,0,0,3.45,8.33A53.9,53.9,0,0,0,77,247.22a111.24,111.24,0,0,0,34,5.32c43.95,0,80-30.3,82.82-68.47A109.44,109.44,0,0,0,223,178.86,53.91,53.91,0,0,0,260.35,194a4.89,4.89,0,0,0,3.45-8.34,29.72,29.72,0,0,1-7.84-28c12.29-13.1,19-29.63,19-46.69C275,68.51,232.6,37.7,189.06,37.7ZM110.94,242.77c-11.53,0-24.66-2.26-33.46-5.76a4.87,4.87,0,0,0-5.4,1.24,44.11,44.11,0,0,1-21.92,13,39.52,39.52,0,0,0,3-29.07A4.92,4.92,0,0,0,52,220.13c-11.08-11.41-17.18-25.91-17.18-40.83,0-34.41,34.88-63.48,76.17-63.48,39,0,73.24,27.11,73.24,63.48C184.18,214.3,151.32,242.77,110.94,242.77Zm137.11-91a4.92,4.92,0,0,0-1.19,2.06,39.52,39.52,0,0,0,3,29.07,44.11,44.11,0,0,1-21.92-13,4.88,4.88,0,0,0-5.4-1.24c-7.63,3-18.5,5.13-28.77,5.64-1.43-18.46-10.64-35.82-26.39-48.7h63.69a4.89,4.89,0,1,0,0-9.77H152.36A91.08,91.08,0,0,0,116,106.2c2.81-32.8,34.5-58.74,73-58.74,41.29,0,76.17,29.07,76.17,63.48C265.23,125.86,259.13,140.36,248.05,151.77Z"
+                class="stroke-white" />
+            <path d="M150,164.65H88.48a4.88,4.88,0,1,0,0,9.76H150a4.88,4.88,0,0,0,0-9.76Z" class="stroke-white" />
+            <path d="M150,194H69a4.88,4.88,0,1,0,0,9.76H150a4.88,4.88,0,0,0,0-9.76Z" class="stroke-white" />
+            <path d="M231.05,86.52H169.53a4.89,4.89,0,0,0,0,9.77h61.52a4.89,4.89,0,1,0,0-9.77Z" class="stroke-white" />
+        </symbol>
+    </svg>
+
+    <header class="header-main">
+        <figure class="logo-header--light">
+            <a href="index.html">
+                <img src="img/svg/logo-dark.svg" alt="SETO COMPANY LOGO" class="logo">
+            </a>
+        </figure>
+
+        <!-- menu icon -->
+        <figure class="menu-icon">
+            <div></div>
+        </figure>
+
+        <!-- Modal window -->
+        <nav class="nav nav-header">
+            <ul class="nav-list nav-list--header">
+                <li class="nav-item nav-item--header"><a href="index.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>главная</span>
+                    </a></li>
+                <li class="nav-item nav-item--header"><a href="about.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>о компании</span>
+                    </a></li>
+                <li class="nav-item nav-item--header"><a href="street-light.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>Уличное освещение</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="industrial-light.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>Пром освещение</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="phito-light.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>Фитосвет</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="control-system.html" class="nav-link nav-link--header active">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>АСУНО</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="stands.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>Опоры</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="services.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>услуги</span>
+                    </a></li>
+                <li class="nav-item nav-item--header"><a href="contacts.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>контакты</span>
+                    </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main--control">
+
+        <section class="hero-all hero--control">
+            <img srcset="
+                        img/asu_1.jpg 2000w,
+                        img/asu_1@0,75x.jpg 1500w,
+                        img/asu_1@0,5x.jpg 1000w,
+                        img/asu_1@0,25x.jpg 498w
+                        " 
+                        sizes="92vw" 
+                        src="img/asu_1.jpg" alt="View of imaginary city in lights" class="hero-image--control hero-all__image">
+            <img src="img/svg/rect-hero--black.svg" alt="" class="home__decor-back hero-all__decor-back">
+            <figure class="hero-all__back"></figure>
+            <header class="hero-all__header">
+                <h1 class="heading-1 heading-1--control">
+                    <span>автоматизированная</span><br>система управления<br><span>наружным освещением</span>
+                </h1>
+            </header>
+            <p class="paragraph hero-all__subheading">
+                Система позволяет по проводам электросети управлять режимами работы любого светодиодного светильника или группы светильников, задавать различные сценарии освещения, выполнять автоматический, адресный и удаленный контроль работоспособности светильников и многое другое.
+            </p>
+            <figure class="hero-decor hero-all__decor">
+                <img src="img/svg/cell-fill--light-blue.svg" alt="Honeycell light blue" class="decor-honeycell">
+                <img src="img/svg/cell-no-fill--white.svg" alt="Honeycell transparent" class="decor-honeycell">
+                <img src="img/svg/cell-fill--blue.svg" alt="Honeycell blue" class="decor-honeycell">
+            </figure>
+        </section>
+
+        <section class="usage presentation">
+            <img srcset="img/asu_2.jpg 2000w,
+                        img/asu_2@0,75x.jpg 1500w,
+                        img/asu_2@0,5x.jpg 1000w,
+                        img/asu_2@0,25x.jpg 498w
+                        " 
+                        sizes="92vw" src="img/asu_2.jpg" alt="Abstraction LED lights"
+                class="presentation__background-image">
+            <figure class="hero-all__back"></figure>
+            <img src="img/svg/rect-left-decor--pink.svg" alt="background decor" class="presentation__background-decor">
+            <img src="img/svg/cell-no-fill--white.svg" alt="Honeycell transparent" class="presentation__decor-honeycell">
+            <img src="img/svg/cell-fill--light-blue.svg" alt="Honeycell light blue" class="presentation__decor-honeycell">
+            <header class="presentation__header presentation__header--about-company">
+                <h2 class="heading-2">ОБЛАСТИ ПРИМЕНЕНИЯ</h2>
+            </header>
+            <!-- <h2 class="heading-2">ОБЛАСТИ ПРИМЕНЕНИЯ</h2> -->
+            <p class="paragraph presentation-subheading">Области применения системы включают в себя различные объекты городской и сельской инфраструктуры, автомобильные и железные дороги, торговые комплексы, промышленные предприятия, социально-культурные и спортивные объекты, офисные помещения и др.светильников и многое другое.</p>
+        </section>
+
+        <section class="features section">
+            <img srcset="img/asu_3.jpg 2000w,
+                        img/asu_3@0,75x.jpg 1500w,
+                        img/asu_3@0,5x.jpg 1000w,
+                        img/asu_3@0,25x.jpg 498w
+                        " sizes="92vw" src="img/asu_3.jpg" alt="Abstraction LED lights"
+                class="section__background-image">
+            <h2 class="heading-2">Преимущества АСУО “СЭТО”</h2>
+            <ul class="features-list--text">
+                <li class="features-item--text" data-index="1">
+                    <h3 class="heading-3 features-item--text__heading">Эффективность</h3>
+                    <p class="paragraph features-item--text__text">Команды управления светильниками передаются по имеющейся электросети адресно и без ретрансляции. При этом нет необходимости в использовании дополнительных кабелей. Обеспечивается надежная передача сигнала на линиях любой длины и конфигурации.</p>
+                </li>
+                <li class="features-item--text" data-index="2">
+                    <h3 class="heading-3 features-item--text__heading">Варианты контроля</h3>
+                    <p class="paragraph features-item--text__text">Возможность контроля объемов, сроков и качества обслуживания сети освещения.</p>
+                </li>
+                <li class="features-item--text" data-index="3">
+                    <h3 class="heading-3 features-item--text__heading">Управление расписанием</h3>
+                    <p class="paragraph features-item--text__text">Индивидуальное и (или) групповое управление режимами работы светильников (от 0 до 100% мощности) по астрономическому
+                    расписанию, по показаниям датчиков освещенности и движения, по команде пользователя.</p>
+                </li>
+                <li class="features-item--text" data-index="4">  
+                    <h3 class="heading-3 features-item--text__heading">Технология</h3>
+                    <p class="paragraph features-item--text__text">Уникальная запатентованная российская технология передачи адресных команд по электросети для управления осветительным оборудованием.</p>
+                </li>
+                <li class="features-item--text" data-index="5">  
+                    <h3 class="heading-3 features-item--text__heading">Нагрузочная способность</h3>
+                    <p class="paragraph features-item--text__text">Существенно большая нагрузочная способность шкафов управления (в базисном исполнении до 3х100, А) при меньших
+                    массогабаритах.</p>
+                </li>
+                <li class="features-item--text" data-index="6">  
+                    <h3 class="heading-3 features-item--text__heading">Электронные ключи</h3>
+                    <p class="paragraph features-item--text__text">Коммутация нагрузки производится электронными ключами (не механическими контакторами, которые могут подгореть) в момент
+                    перехода напряжения через ноль, что обуславливает отсутствие пусковых токов при включении линий освещения и
+                    перенапряжений при их выключении.</p>
+                </li>
+                <li class="features-item--text" data-index="7">  
+                    <h3 class="heading-3 features-item--text__heading">Защищенное управление</h3>
+                    <p class="paragraph features-item--text__text">Защищенное мобильное диспетчерское управление через сеть GSM/Ethernet (в том числе – корректировка базовых настроек
+                    оборудования).</p>
+                </li>
+                <li class="features-item--text" data-index="8">  
+                    <h3 class="heading-3 features-item--text__heading">Удобство</h3>
+                    <p class="paragraph features-item--text__text">Автоматическое выявление обрывов линий освещения и неисправных светильников с указанием их точного места расположения на
+                    схеме сети освещения без специального включения линий освещения для визуального осмотра.</p>
+                </li>
+                <li class="features-item--text" data-index="9">  
+                    <h3 class="heading-3 features-item--text__heading">Функциональность</h3>
+                    <p class="paragraph features-item--text__text">Малые массогабариты программно-технических средств, широкий функционал применения.</p>
+                </li>
+                <li class="features-item--text" data-index="10">  
+                    <h3 class="heading-3 features-item--text__heading">Мониторинг системы</h3>
+                    <p class="paragraph features-item--text__text">Интернет-мониторинг технологических параметров системы (значения фазовых токов и напряжений, показания счетчика
+                    электроэнергии, количество работающих и неработающих светильников и др.).</p>
+                </li>
+                <li class="features-item--text" data-index="11">  
+                    <h3 class="heading-3 features-item--text__heading">Сценарии работы</h3>
+                    <p class="paragraph features-item--text__text">Возможность формирования и корректировки сценариев работы системы освещения с учетом специфики инфраструктуры и
+                    эксплуатационных режимов освещаемых объектов.</p>
+                </li>
+                <li class="features-item--text" data-index="12">  
+                    <h3 class="heading-3 features-item--text__heading">Система оповещения</h3>
+                    <p class="paragraph features-item--text__text">Оповещение о событиях может принимать форму экстренного дозвона в телефонном режиме либо SMS-рассылки на заданные
+                    номера.</p>
+                </li>
+            </ul>
+            
+            <!-- features honeysell -->
+            <figure class="features-honeycell">
+                <ul class="features-list--icons">
+                    <li class="features-item--icon active" data-index="1">
+                        <svg class="honeycell-vert control-features" viewBox="0 0 89.6 103.46">
+                            <use href="#features-cell">
+                        </svg>
+                        <svg class="icon--features fill--white features-honeycell__item" viewBox="0 0 300 300"">
+                            <use href="#thumb">
+                        </svg>
+                    </li>
+                    <li class="features-item--icon" data-index="2">
+                        <svg class="honeycell-vert control-features" viewBox="0 0 89.6 103.46">
+                            <use href="#features-cell">
+                        </svg>
+                        <svg class="icon--features fill--white features-honeycell__item" viewBox="0 0 300 300">
+                            <use href="#options-control">
+                        </svg>
+                    </li>
+                    <li class="features-item--icon" data-index="3">
+                        <svg class="honeycell-vert control-features" viewBox="0 0 89.6 103.46">
+                            <use href="#features-cell">
+                        </svg>
+                        <svg class="icon--features fill--white features-honeycell__item" viewBox="0 0 300 300">
+                            <use href="#time">
+                        </svg>
+                    </li>
+                    <li class="features-item--icon" data-index="4">
+                        <svg class="honeycell-vert control-features" viewBox="0 0 89.6 103.46">
+                            <use href="#features-cell">
+                        </svg>
+                        <svg class="icon--features fill--white features-honeycell__item" viewBox="0 0 300 300">
+                            <use href="#technology">
+                        </svg>
+                    </li>
+                    <li class="features-item--icon" data-index="5">
+                        <svg class="honeycell-vert control-features" viewBox="0 0 89.6 103.46">
+                            <use href="#features-cell">
+                        </svg>
+                        <svg class="icon--features fill--white features-honeycell__item" viewBox="0 0 300 300">
+                            <use href="#power">
+                        </svg>
+                    </li>
+                    <li class="features-item--icon" data-index="6">
+                        <svg class="honeycell-vert control-features" viewBox="0 0 89.6 103.46">
+                            <use href="#features-cell">
+                        </svg>
+                        <svg class="icon--features fill--white features-honeycell__item" viewBox="0 0 300 300">
+                            <use href="#keys">
+                        </svg>
+                    </li>
+                    <li class="features-item--icon" data-index="7">
+                        <svg class="honeycell-vert control-features" viewBox="0 0 89.6 103.46">
+                            <use href="#features-cell">
+                        </svg>
+                        <svg class="icon--features fill--white features-honeycell__item" viewBox="0 0 300 300">
+                            <use href="#protection">
+                        </svg>
+                    </li>
+                    <li class="features-item--icon" data-index="8">
+                        <svg class="honeycell-vert control-features" viewBox="0 0 89.6 103.46">
+                            <use href="#features-cell">
+                        </svg>
+                        <svg class="icon--features fill--white features-honeycell__item" viewBox="0 0 300 300">
+                            <use href="#comfort">
+                        </svg>
+                    </li>
+                    <li class="features-item--icon" data-index="9">
+                        <svg class="honeycell-vert control-features" viewBox="0 0 89.6 103.46">
+                            <use href="#features-cell">
+                        </svg>
+                        <svg class="icon--features fill--white features-honeycell__item" viewBox="0 0 300 300">
+                            <use href="#9">
+                        </svg>
+                    </li>
+                    <li class="features-item--icon" data-index="10">
+                        <svg class="honeycell-vert control-features" viewBox="0 0 89.6 103.46">
+                            <use href="#features-cell">
+                        </svg>
+                        <svg class="icon--features fill--white features-honeycell__item" viewBox="0 0 300 300">
+                            <use href="#monitoring">
+                        </svg>
+                    </li>
+                    <li class="features-item--icon" data-index="11">
+                        <svg class="honeycell-vert control-features" viewBox="0 0 89.6 103.46">
+                            <use href="#features-cell">
+                        </svg>
+                        <svg class="icon--features fill--white features-honeycell__item" viewBox="0 0 300 300">
+                            <use href="#scenarious">
+                        </svg>
+                    </li>
+                    <li class="features-item--icon" data-index="12">
+                        <svg class="honeycell-vert control-features" viewBox="0 0 89.6 103.46">
+                            <use href="#features-cell">
+                        </svg>
+                        <svg class="icon--features fill--white features-honeycell__item" viewBox="0 0 300 300">
+                            <use href="#call">
+                        </svg>
+                    </li>
+                    
+                </ul>
+
+                <img src="img/home-control@0,25x.jpg" alt="" class="features-img">
+            </figure>
+            <!-- line between -->
+
+            <figure class="features-decor" data-line="3">
+                <svg class="line--features" viewBox="0 0 150 450">
+                    <use href="#decor-features-3"></use>
+                </svg>
+            </figure>
+
+        </section>
+
+        <section class="control-system">
+
+            <aside class="side-nav side-nav--control">
+                <nav class="nav-description">
+                    <ul class="nav-list nav-list--description">
+                        <li class="nav-item nav-item--description active" data-index="1">
+                            <figure alt="icon honey cell" class="nav-icon nav-icon--description">
+                                <svg class="honeycell--blue" viewBox="0 0 144.08 185.64">
+                                    <use href="#honey-cell">
+                                </svg>
+                            </figure>
+                            <figure alt="icon honey cell" class="nav-icon nav-icon--description">
+                                <svg class="honeycell--pink honeycell--pink-filter" viewBox="0 0 144.08 185.64">
+                                    <use href="#honey-cell">
+                                </svg>
+                            </figure>
+                            <h4 class="heading-4 nav-description__title">Структурное освещение</h4>
+                        </li>
+                        <li class="nav-item nav-item--description" data-index="2">
+                            <figure alt="icon honey cell" class="nav-icon nav-icon--description">
+                                <svg class="honeycell--blue" viewBox="0 0 144.08 185.64">
+                                    <use href="#honey-cell">
+                                </svg>
+                            </figure>
+                            <figure alt="icon honey cell" class="nav-icon nav-icon--description">
+                                <svg class="honeycell--pink honeycell--pink-filter" viewBox="0 0 144.08 185.64">
+                                    <use href="#honey-cell">
+                                </svg>
+                            </figure>
+                            <h4 class="heading-4 nav-description__title">Шкаф управления</h4>
+                        </li>
+                        <li class="nav-item nav-item--description" data-index="3">
+                            <figure alt="icon honey cell" class="nav-icon nav-icon--description">
+                                <svg class="honeycell--blue" viewBox="0 0 144.08 185.64">
+                                    <use href="#honey-cell">
+                                </svg>
+                            </figure>
+                            <figure alt="icon honey cell" class="nav-icon nav-icon--description">
+                                <svg class="honeycell--pink honeycell--pink-filter" viewBox="0 0 144.08 185.64">
+                                    <use href="#honey-cell">
+                                </svg>
+                            </figure>
+                            <h4 class="heading-4 nav-description__title">Программное
+                            обеспечение</h4>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="control-item control-scheme" data-index="1">
+                <img srcset="
+                img/scheme.jpg 1920w,
+                img/scheme@0,75x.jpg 1440w,
+                img/scheme@0,5x.jpg 960w,
+                img/scheme@0,25x.jpg 480w
+                "
+                src="img/scheme@0,75x.jpg" alt="Control system scheme" class="control-scheme__image">
+            </div>
+            <div class="control-item control-box" data-index="2">
+                <figure class="control-background"></figure>
+                <p class="paragraph paragraph--control control-system__text">
+                    Предназначен для адресного управления режимами работы (0–100% мощности) светодиодных светильников и их автоматической диагностики. Команды управления от ШУНО подаются в линию освещения адресно. Формирование команды происходит посредством силового оптоэлектронного коммутатора-модулятора под управлением контроллера шкафа. Контроллер шкафа может быть настроен на включение/отключение линии освещения, как по внутреннему астрономическому расписанию, так и внешнему воздействию: от датчиков освещенности, движения и (или) от автоматизированного рабочего места диспетчерского пункта (АРМ ДП).<br>
+                    Во время работы ШУНО передает команды управления режимами работы светильников, производит их автоматическую диагностику, контролирует уровень GSM-сигнала, ведет учет потребляемой электроэнергии, измеряет значения фазных токов и напряжений в линии освещения, сигнализирует об аварийных режимах. В ШУНО предусмотрена защита от сверхтоков и перенапряжений, осуществляется сбор и пере- дача информации о технологических параметрах через GSM или конвертер RS-485/Ethernet сеть на сервер АСУНО. При необходимости диспетчер может внести коррективы в текущие настройки режимов или дистанционно управлять оборудованием.<br>
+                    ШУНО имеет два вида базового исполнения (IP54): трехфазное (напряжение: 380В, ток нагрузки: 3×25А; 3×50А; 3×100А) и однофазное (напряжение: 220В; ток нагрузки: 25А; 50А) (Таблица 2, стр. 14). 
+                </p>
+                <div class="control-highlight">
+                    <p class="paragraph paragraph--control control-system__text--highlight">Максимальное количество индивидуально управляемых светильников от одного трехфазного шкафа — 660, от однофазного — 220.
+                    Адреса записываются в память электросетевых приемников команд светодиодных светильников.</p>
+                </div>
+                
+            </div>
+            <div class="control-item control-software" data-index="3">
+                <figure class="control-background"></figure>
+                <p class="paragraph paragraph--control control-system__text">
+                    Программное обеспечение (ПО) АСУНО имеет две подсистемы: подсистему мониторинга и диагностики и подсистему управления режимами работы наружного освещения.
+                    
+                    Подсистема мониторинга и диагностики имеет в своем составе систему управления базами данных (СУБД), расположенную на Интернет-сервере.
+                    
+                    В процессе функционирования системы в автоматическом режиме, через заданный интервал опроса от ШУНО в СУБД поступают необходимые технологические параметры. Просмотр информации возможен для любого авторизованного пользователя через сеть Интернет при помощи обычного Интернет-браузера. Техническая информация предоставляется по каждому шкафу управления c
+                    интервалом в две минуты и включает в себя: данные по напряжению, токам, уровню потребления электроэнергии, уровню сигнала GSM/Ethernet; открытое либо закрытое положение двери шкафа (идентификация взлома). Тест-диагностика на
+                    исправность светильников производится раз в сутки. Результаты отображаются в табличной и графической формах. Неисправные светильники выявляются в конце каждого рабочего цикла и отображаются на мнемосхеме линии освещения черным кружком с указанием номера светильника. Возможен экспорт данных по запросу для дальнейшей обработки и аналитики.
+                    
+                    Подсистема управления имеет два уровня: ПО контроллера ШУНО, обеспечивающее его автономное функционирование по заданному на календарный год расписанию, и ПО автоматизированного рабочего места диспетчера с управлением GSM-модемом, которое позволяет дистанци- онно управлять режимами работы сети наружного освещения, менять расписание работы ШУНО и др.
+                </p>
+                <div class="control-highlight">
+                    <p class="paragraph paragraph--control control-system__text--highlight">При внедрении АСУНО не требуется создание специализированной диспетчерской, количество пользователей АСУНО и управляющих ее режимами может быть определено как на этапе пусконаладки, так и в процессе ее последующей эксплуатации.</p>
+                </div>
+                <img srcset="
+                        img/software.jpg 1920w,
+                        img/software@0,75x.jpg 1440w,
+                        img/software@0,5x.jpg 960w,
+                        img/software@0,25x.jpg 480w
+                        " src="img/software@0,75x.jpg" alt="" class="control-image control-software__image">
+            </div>
+            <figure class="control-system-decor">
+                <img src="img/svg/cell-fill--dark-blue.svg" alt="Honeycell dark blue" class="decor-honeycell control-system-decor__figure control-system-decor__figure--1">
+                <img srcset="
+                            img/control-system.jpg 601w,
+                            img/control-system@0,75x.jpg 451w,
+                            img/control-system@0,5x.jpg 301w
+                            " 
+                            src="img/control-system.jpg" alt="" class="control-system-decor__image">
+                <img src="img/svg/cell-fill--pink.svg" alt="Honeycell blue" class="decor-honeycell control-system-decor__figure control-system-decor__figure--3">
+                <img src="img/svg/cell-white--transp.svg" alt="Honeycell transparent" class="decor-honeycell control-system-decor__figure control-system-decor__figure--2">
+            </figure>
+
+        </section>
+    </main> 
+
+    <footer class="footer">
+        <nav class="nav-footer">
+            <ul class="nav-list nav-list--footer footer-navigation">
+                <li class="nav-item nav-item--footer"><a href="index.html" class="nav-link nav-link--footer">Главная</a>
+                </li>
+                <li class="nav-item nav-item--footer"><a href="about.html" class="nav-link nav-link--footer">О компании</a>
+                </li>
+                <li class="nav-item nav-item--footer"><a href="services.html" class="nav-link nav-link--footer">Услуги</a>
+                </li>
+                <li class="nav-item nav-item--footer"><a href="contacts.html" class="nav-link nav-link--footer">Контакты</a>
+                </li>
+                <li class="nav-item nav-item--footer"><a href="street-light.html" class="nav-link nav-link--footer">Уличное
+                        освещение</a></li>
+                <li class="nav-item nav-item--footer"><a href="industrial-light.html"
+                        class="nav-link nav-link--footer">Промышленное освещение</a></li>
+                <li class="nav-item nav-item--footer"><a href="phito-light.html"
+                        class="nav-link nav-link--footer">Фитосвет</a></li>
+                <li class="nav-item nav-item--footer"><a href="stands.html" class="nav-link nav-link--footer">Опоры уличного
+                        освещения</a></li>
+                <li class="nav-item nav-item--footer"><a href="control-system.html"
+                        class="nav-link nav-link--footer">Автоматизированная система управления освещением</a></li>
+            </ul>
+        </nav>
+        <address class="footer-address">
+            <span class="footer-text">Адрес: 150044, г.Ярославль пр.Октября, д.93</span>
+            <span class="footer-text"><a class="nav-link nav-link--footer" href=tel:+74852663720" class="footer-link">+7
+                    (4852) 66-37-20</a></span>
+            <span class="footer-text"><a class="nav-link nav-link--footer" href="mailto:info@setolight.ru"
+                    class="footer-link">info@setolight.ru</a></span>
+        </address>
+        <figure class="footer-line"></figure>
+        <div class="footer-copyright">
+            <p class="footer-text">&copy; 2017 - 2019 сэтогрупп</p>
+        </div>
+    
+    </footer>
+
+</body>
+
+</html>

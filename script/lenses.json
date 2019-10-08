@@ -1,0 +1,118 @@
+[
+  {
+    "lense": "SL78-1",
+    "testName": "Параметры испытаний",
+    "power": "50 Вт (120 лм/В)",
+    "height": "5.5м",
+    "width": "3.75м"
+  },
+  {
+    "lense": "SL78-2",
+    "resultsName": "Однородность освещенности",
+    "resultsValue": "0.54"
+  },
+  {
+    "lense": "SL78-3",
+    "resultsName": "Однородность освещенности",
+    "resultsValue": "0.63"
+  },
+  {
+    "lense": "SL78-4",
+    "resultsName": "Однородность освещенности",
+    "resultsValue": "0.68"
+  },
+  {
+    "lense": "SL78-45",
+    "resultsName": "Однородность освещенности",
+    "resultsValue": "0.46"
+  },
+  {
+    "lense": "SL92-0",
+    "testName": "Параметры испытаний",
+    "power": "180 Вт (120 лм/В)",
+    "height": "10м",
+    "width": "35м",
+    "angle": 0
+  },
+  {
+    "lense": "SL92-1",
+    "testName": "Параметры испытаний",
+    "power": "60 Вт (120 лм/В)",
+    "height": "6м",
+    "width": "40м",
+    "angle": 0.8
+  },
+  {
+    "lense": "SL92-2",
+    "testName": "Параметры испытаний",
+    "power": "80 Вт (120 лм/В)",
+    "height": "10м",
+    "width": "30м",
+    "angle": 0.8
+  },
+  {
+    "lense": "SL92-3",
+    "testName": "Параметры испытаний",
+    "power": "180 Вт (120 лм/В)",
+    "height": "10м",
+    "width": "35м",
+    "angle": 14
+  },
+  {
+    "lense": "SL92-4",
+    "testName": "Параметры испытаний",
+    "power": "180 Вт (120 лм/В)",
+    "height": "10м",
+    "width": "35м",
+    "angle": 14
+  },
+  {
+    "lense": "SL92-5",
+    "testName": "Параметры испытаний",
+    "power": "180 Вт (120 лм/В)",
+    "height": "10м",
+    "width": "30м",
+    "angle": 14
+  },
+  {
+    "lense": "SL92-6",
+    "testName": "Параметры испытаний",
+    "power": "180 Вт (120 лм/В)",
+    "height": "10м",
+    "width": "35м",
+    "angle": 14
+  },
+  {
+    "lense": "SL92-7",
+    "testName": "Параметры испытаний",
+    "radius": "1м",
+    "power": "75 Вт (120 лм/В)",
+    "height": "30м",
+    "quantity": 10,
+    "angle": 0
+  },
+  {
+    "lense": "SL92-T4",
+    "testName": "Параметры испытаний",
+    "power": "180 Вт (120 лм/В)",
+    "height": "12м",
+    "width": "40м",
+    "angle": 25
+  },
+  {
+    "lense": "SL93",
+    "testName": "Параметры испытаний",
+    "power": "180 Вт (120 лм/В)",
+    "height": "10м",
+    "width": "30м",
+    "angle": 14
+  },
+  {
+    "lense": "SL106-1",
+    "testName": "Параметры испытаний",
+    "power": "60 Вт (120 лм/В)",
+    "height": "6м",
+    "width": "40м",
+    "angle": 12
+  }
+]

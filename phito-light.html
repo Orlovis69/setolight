@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Фитосвет</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="script/menu.js" async></script>
+</head>
+
+<body class="container">
+    <!-- SVG DECLARATION -->
+    <svg class="svg-filter">
+        <defs>
+            <filter id="sofGlow" height="300%" width="300%" x="-75%" y="-75%" filterUnits="userSpaceOnUse">
+                <!-- Thicken out the original shape -->
+                <feMorphology operator="dilate" radius="1.5" in="SourceAlpha" result="thicken" />
+
+                <!-- Use a gaussian blur to create the soft blurriness of the glow -->
+                <feGaussianBlur in="thicken" stdDeviation="5" result="blurred" />
+
+                <!-- Change the colour -->
+                <feFlood flood-color="rgb(179,18,132)" result="glowColor" />
+
+                <!-- Color in the glows -->
+                <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored" />
+                <!--	Layer the effects together -->
+                <feMerge>
+                    <feMergeNode in="softGlow_colored" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+        </defs>
+    </svg>
+    <svg display="none">
+        <symbol id="honey-cell" viewBox="0 0 144.08 170.64">
+            <polygon class="honeycell"
+                points="3.5 44.69 3.5 125.94 72.04 166.57 140.58 125.94 140.58 44.69 72.04 4.07 3.5 44.69" />
+        </symbol>
+        <symbol id="decor-line" viewBox="0 0 1121.46 803.98">
+            <path class="line"
+                d="M731.42,0H2.63A2.63,2.63,0,0,0,0,2.63L.75,803h0l784.53,1a57.13,57.13,0,0,0,30.42-8.73l279-175a57.11,57.11,0,0,0,17.61-79.4L779.38,26.1A57.14,57.14,0,0,0,731.42,0Z" />
+        </symbol>
+        <symbol id="decor-instance" viewBox="0 0 354.5 61.95" preserveAspectRatio="none">
+            <g>
+                <line class="line-2" y1="60.95" x2="349.01" y2="60.95" />
+                <line class="line-2" x1="350" y1="60.97" x2="350" y2="9.93" />
+                <ellipse class="line-2" cx="349.5" cy="5.45" rx="4" ry="4.45" />
+            </g>
+        </symbol>
+    </svg>
+
+    <header class="header-main">
+        <figure class="logo-header--light">
+            <a href="index.html">
+                <img src="img/svg/logo-dark.svg" alt="SETO COMPANY LOGO" class="logo">
+            </a>
+        </figure>
+
+        <!-- menu icon -->
+        <figure class="menu-icon">
+            <div></div>
+        </figure>
+
+        <!-- Modal window -->
+        <nav class="nav nav-header">
+            <ul class="nav-list nav-list--header">
+                <li class="nav-item nav-item--header"><a href="index.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>главная</span>
+                    </a></li>
+                <li class="nav-item nav-item--header"><a href="about.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>о компании</span>
+                    </a></li>
+                <li class="nav-item nav-item--header"><a href="street-light.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>Уличное освещение</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="industrial-light.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>Пром освещение</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="phito-light.html" class="nav-link nav-link--header active">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>Фитосвет</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="control-system.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>АСУНО</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="stands.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>Опоры</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="services.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>услуги</span>
+                    </a></li>
+                <li class="nav-item nav-item--header"><a href="contacts.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>контакты</span>
+                    </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main--phito">
+
+        <section class="hero-all hero--phito">
+            <img srcset="
+                        img/phito_1.jpg 2000w,
+                        img/phito_1@0,75x.jpg 1500w,
+                        img/phito_1@0,5x.jpg 1000w,
+                        img/phito_1@0,25x.jpg 498w
+                        " 
+                        sizes="92vw" src="img/phito_1.jpg" alt="View of imaginary city in lights"
+                class="hero-image--control hero-all__image">
+            <img src="img/svg/rect-hero--pink.svg" alt="" class="home__decor-back hero-all__decor-back">
+            <figure class="hero-all__back"></figure>
+            <header class="hero-all__header">
+                <h1 class="heading-1 heading-1--phito">фитосвет</h1>
+            </header>
+            <p class="paragraph hero-all__subheading">
+                Хорошая освещенность - это одно из важных условий развития растений.
+                В условиях дефицита света сеянцы могут болеть, стебли у них становятся ломкими. А ведь прижиться в открытой почве, расти и приносить урожай, могут только сильные и хорошо развитые саженцы.
+                Фитолампы способны решить эту проблему.
+            </p>
+            <figure class="hero-decor hero-all__decor">
+                <img src="img/svg/cell-fill--blue.svg" alt="Honeycell white" class="hero-decor__img">
+                <img src="img/svg/cell-no-fill--white.svg" alt="Honeycell white" class="hero-decor__img">
+                <img src="img/svg/cell-fill--white.svg" alt="Honeycell blue" class="hero-decor__img">
+            </figure>
+        </section>
+
+        <section class="how-it-works">
+            <header class="section-header">
+                <h2 class="heading-2">Как это работает?</h2>
+            </header>
+            <p class="paragraph paragraph--phito">
+                Солнечный свет не является однородным, если рассматривать его спектральный состав. Свет исходящий от солнца имеет разные длины волн.
+                Самые важные лучи для растений - оранжевые и красные. Эти лучи доставляют энергию для процесса фотосинтеза, а также отвечают за процессы, влияющие на скорость развития растений.
+                <br>
+                Пигменты с пиком чувствительности в красной области спектра отвечают за развитие корневой системы, созревание плодов, цветение растений. Слишком большое количество красных и оранжевых лучей могут задерживать цветение растений.
+            </p>
+            <img src="img/svg/phito-graph.svg" alt="Chlorophil syntesis" class="section-image">
+            <p class="paragraph paragraph--phito">
+                Синие и фиолетовые лучи также принимают непосредственное участие в жизни растений. В их функции входит стимулирование образования белков и регулирование скорости роста растений. Растения, которые растут в природных условиях короткого дня, быстрее зацветают именно под воздействием синих и фиолетовых лучей. Пигменты с пиком поглощения в синей области отвечают за развитие листьев, рост растений. Растения, растущие с недостаточным количеством
+                синего света, более высокие. Они тянутся вверх, чтобы получить больше синего света.
+                <br>
+                Ультрафиолетовые лучи не позволяют растениям чрезмерно вытягиваться и отвечают за синтез ряда витаминов, они повышают стойкость растений к более низким температурам.
+            </p>
+            <figure class="img-description">
+                <img src="img/plants.png" alt="Схема поглощения света фотосинтезирующими организмами" class="section-image">
+                <figcaption class="img-caption">
+                    Поглощающие свет пигменты в фотосинтезирующих организмах захватывают фотоны определенных цветов, отражая остальные. Энергия фотона через длинную сеть молекул передается в реакционный центр, который расщепляет воду для получения энергичных электронов, требующихся для биохимических реакций.
+                </figcaption>
+            </figure>
+        </section>
+        <section class="table-data">
+            <p class="paragraph paragraph--phito">
+                Обычные светодиоды изготавливаются из различных неорганических полупроводниковых материалов, в следующей таблице приведены доступные цвета с диапазоном длин волн, падение напряжения на диоде, и материал:
+            </p>
+            <table class="description-table description-table--phito">
+                <tr>
+                    <th>Цвет</th>
+                    <th>Длина волны (нм)</th>
+                    <th>Материал полупроводника</th>
+                </tr>
+                <tr>
+                    <td>Инфракрасный</td>
+                    <td>&gt; 760</td>
+                    <td>Арсенид галлия (GaAs) Алюминия галлия арсенид (AlGaAs)</td>
+                </tr>
+                <tr>
+                    <td>Красный</td>
+                    <td>610 ~ 760</td>
+                    <td>Алюминия-галлия арсенид (AlGaAs) Галлия арсенид-фосфид (GaAsP) Алюминия-галлия-индия фосфид (AlGaInP) Галлия(III) фосфид
+                    (GaP)</td>
+                </tr>
+                <tr>
+                    <td>Оранжевый</td>
+                    <td>590 ~ 610</td>
+                    <td>Галлия фосфид-арсенид (GaAsP) Алюминия-галлия-индия фосфид (AlGaInP) Галлия(III) фосфид (GaP)</td>
+                </tr>
+                <tr>
+                    <td>Жёлтый</td>
+                    <td>570 ~ 590</td>
+                    <td>Галлия арсенид-фосфид (GaAsP) Алюминия-галлия-индия фосфид (AlGaInP) Галлия(III) фосфид (GaP)</td>
+                </tr>
+                <tr>
+                    <td>Зелёный</td>
+                    <td>500 ~ 570</td>
+                    <td>Индия-галлия нитрид (InGaN) / Галлия(III) нитрид (GaN) Галлия(III) фосфид (GaP) Алюминия-галлия-индия фосфид (AlGaInP)
+                    Алюминия-галлия фосфид (AlGaP)</td>
+                </tr>
+                <tr>
+                    <td>Синий</td>
+                    <td>450 ~ 500</td>
+                    <td>Селенид цинка (ZnSe) Индия-галлия нитрид (InGaN) Карбид кремния (SiC) в качестве субстрата Кремний (Si) в качестве
+                    субстрата - (в разработке)</td>
+                </tr>
+                <tr>
+                    <td>Фиолетовый</td>
+                    <td>400 ~ 450</td>
+                    <td>Индия-галлия нитрид (InGaN)</td>
+                </tr>
+                <tr>
+                    <td>Пурпурный</td>
+                    <td>Смесь нескольких спектров</td>
+                    <td>Двойной: синий/красный диод, синий с красным люминофором, или белый с пурпурным пластиком</td>
+                </tr>
+                <tr>
+                    <td>Ультрафиолетовый</td>
+                    <td>&lt; 400</td>
+                    <td>Алмаз (235 нм) Нитрид бора (215 нм) Нитрид алюминия (AlN) (210 нм) Нитрид алюминия-галлия (AlGaN) Нитрид
+                    алюминия-галлия-индия (AlGaInN) - (менее 210 нм)</td>
+                </tr>
+                <tr>
+                    <td>Белый</td>
+                    <td>Широкий спектр</td>
+                    <td>Бирюзовый/ультрафиолетовый диод с люминофором</td>
+                </tr>
+            </table>
+            <p class="paragraph paragraph--phito">
+                Фотосинтез Вашей сельско-хозяйственной продукции превзойдет все ожидания при использовании наших сверхмощных фитопрожекторов с оптимальным набором сверхярких диодов, с максимальным охватом площади покрытия, с наилучшим пропорциональным соотношением длин волн на основе данных исследований Российского государственного аграрного университета - МСХА имени К.А.Тимирязева
+            </p>
+        </section>
+        <section class="instances">
+            <header class="instances-header">
+                <h2 class="heading-2">Модели светильников</h2>
+            </header>
+            <ul class="instances-list">
+                <li class="instance-item">
+                    <figure class="instance-decor instance-decor--left">
+                        <svg class="line--instances" viewBox="0 0 354.5 61.95">
+                            <use href="#decor-instance"></use>
+                        </svg>
+                    </figure>
+                    <a href="fl-2.html" class="instance-link">
+                        <figure class="instance-figure">
+                            <img srcset="
+                                        img/PL-2-1@0,75x.png 1500w,
+                                        img/PL-2-1@0,5x.png 100w,
+                                        img/PL-2-1@0,25x.png 529w
+                                        " sizes="
+                                        (min-width: 1920px) 28vw,
+                                        (min-width: 1025px) and (max-width: 1919px) 33vw,
+                                        (min-width: 769px) and (max-width: 1024px) 36vw,
+                                        (min-width: 600px) and (max-width: 768px) 42vw,
+                                        (max-width: 599px) 60vw
+                                        " src="img/PL-2-1@0,75x.png" alt="Street light PL-2" class="instance-image">
+                            <figcaption class="instance-caption">
+                                <h3 class="heading-3 instance-title">Фито-светильник FL2</h3>
+                                <p class="paragraph instance-subtitle">100-200 Вт</p>
+                                <p class="paragraph instance-more">читать подробно</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="instance-item">
+                    <figure class="instance-decor instance-decor--right">
+                        <svg class="line--instances" viewBox="0 0 354.5 61.95">
+                            <use href="#decor-instance"></use>
+                        </svg>
+                    </figure>
+                    <a href="fl-3.html" class="instance-link">
+                        <figure class="instance-figure">
+                            <img srcset="
+                                        img/PL-3-1@0,75x.png 1500w,
+                                        img/PL-3-1@0,5x.png 100w,
+                                        img/PL-3-1@0,25x.png 529w
+                                        " sizes="
+                                        (min-width: 1920px) 28vw,
+                                        (min-width: 1025px) and (max-width: 1919px) 33vw,
+                                        (min-width: 769px) and (max-width: 1024px) 36vw,
+                                        (min-width: 600px) and (max-width: 768px) 42vw,
+                                        (max-width: 599px) 60vw
+                                        " src="img/PL-3-1@0,75x.png" alt="Street light PL-2" class="instance-image">
+                            <figcaption class="instance-caption">
+                                <h3 class="heading-3 instance-title">Фито-светильник FL3</h3>
+                                <p class="paragraph instance-subtitle">150-300 Вт</p>
+                                <p class="paragraph instance-more">читать подробно</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <nav class="nav-footer">
+            <ul class="nav-list nav-list--footer footer-navigation">
+                <li class="nav-item nav-item--footer"><a href="index.html" class="nav-link nav-link--footer">Главная</a>
+                </li>
+                <li class="nav-item nav-item--footer"><a href="about.html" class="nav-link nav-link--footer">О компании</a>
+                </li>
+                <li class="nav-item nav-item--footer"><a href="services.html" class="nav-link nav-link--footer">Услуги</a>
+                </li>
+                <li class="nav-item nav-item--footer"><a href="contacts.html" class="nav-link nav-link--footer">Контакты</a>
+                </li>
+                <li class="nav-item nav-item--footer"><a href="street-light.html" class="nav-link nav-link--footer">Уличное
+                        освещение</a></li>
+                <li class="nav-item nav-item--footer"><a href="industrial-light.html"
+                        class="nav-link nav-link--footer">Промышленное освещение</a></li>
+                <li class="nav-item nav-item--footer"><a href="phito-light.html"
+                        class="nav-link nav-link--footer">Фитосвет</a></li>
+                <li class="nav-item nav-item--footer"><a href="stands.html" class="nav-link nav-link--footer">Опоры уличного
+                        освещения</a></li>
+                <li class="nav-item nav-item--footer"><a href="control-system.html"
+                        class="nav-link nav-link--footer">Автоматизированная система управления освещением</a></li>
+            </ul>
+        </nav>
+        <address class="footer-address">
+            <span class="footer-text">Адрес: 150044, г.Ярославль пр.Октября, д.93</span>
+            <span class="footer-text"><a class="nav-link nav-link--footer" href=tel:+74852663720" class="footer-link">+7
+                    (4852) 66-37-20</a></span>
+            <span class="footer-text"><a class="nav-link nav-link--footer" href="mailto:info@setolight.ru"
+                    class="footer-link">info@setolight.ru</a></span>
+        </address>
+        <figure class="footer-line"></figure>
+        <div class="footer-copyright">
+            <p class="footer-text">&copy; 2017 - 2019 сэтогрупп</p>
+        </div>
+    
+    </footer>
+
+</body>
+
+</html>

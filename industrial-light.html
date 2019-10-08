@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Промышленное освещение</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <script src="script/main.js" async></script> -->
+    <script src="script/menu.js" async></script>
+</head>
+
+<body class="container">
+    <!-- SVG DECLARATION -->
+    <svg class="svg-filter">
+        <defs>
+            <filter id="sofGlow" height="300%" width="300%" x="-75%" y="-75%" filterUnits="userSpaceOnUse">
+                <!-- Thicken out the original shape -->
+                <feMorphology operator="dilate" radius="1.5" in="SourceAlpha" result="thicken" />
+
+                <!-- Use a gaussian blur to create the soft blurriness of the glow -->
+                <feGaussianBlur in="thicken" stdDeviation="5" result="blurred" />
+
+                <!-- Change the colour -->
+                <feFlood flood-color="rgb(179,18,132)" result="glowColor" />
+
+                <!-- Color in the glows -->
+                <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored" />
+                <!--	Layer the effects together -->
+                <feMerge>
+                    <feMergeNode in="softGlow_colored" />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+        </defs>
+    </svg>
+    <svg display="none">
+        <symbol id="honey-cell" viewBox="0 0 144.08 170.64">
+            <polygon class="honeycell"
+                points="3.5 44.69 3.5 125.94 72.04 166.57 140.58 125.94 140.58 44.69 72.04 4.07 3.5 44.69" />
+        </symbol>
+        <symbol id="decor-line" viewBox="0 0 1121.46 803.98">
+            <path class="line"
+                d="M731.42,0H2.63A2.63,2.63,0,0,0,0,2.63L.75,803h0l784.53,1a57.13,57.13,0,0,0,30.42-8.73l279-175a57.11,57.11,0,0,0,17.61-79.4L779.38,26.1A57.14,57.14,0,0,0,731.42,0Z" />
+        </symbol>
+        <symbol id="decor-instance" viewBox="0 0 354.5 61.95" preserveAspectRatio="none">
+            <g>
+                <line class="line-2" y1="60.95" x2="349.01" y2="60.95" />
+                <line class="line-2" x1="350" y1="60.97" x2="350" y2="9.93" />
+                <ellipse class="line-2" cx="349.5" cy="5.45" rx="4" ry="4.45" />
+            </g>
+        </symbol>
+    </svg>
+
+    <header class="header-main">
+        <figure class="logo-header--light">
+            <a href="index.html">
+                <img src="img/svg/logo-dark.svg" alt="SETO COMPANY LOGO" class="logo">
+            </a>
+        </figure>
+
+        <!-- menu icon -->
+        <figure class="menu-icon">
+            <div></div>
+        </figure>
+
+        <!-- Modal window -->
+        <nav class="nav nav-header">
+            <ul class="nav-list nav-list--header">
+                <li class="nav-item nav-item--header"><a href="index.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>главная</span>
+                    </a></li>
+                <li class="nav-item nav-item--header"><a href="about.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>о компании</span>
+                    </a></li>
+                <li class="nav-item nav-item--header"><a href="street-light.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>Уличное освещение</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="industrial-light.html" class="nav-link nav-link--header active">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>Пром освещение</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="phito-light.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>Фитосвет</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="control-system.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>АСУНО</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="stands.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>Опоры</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item--header"><a href="services.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>услуги</span>
+                    </a></li>
+                <li class="nav-item nav-item--header"><a href="contacts.html" class="nav-link nav-link--header">
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu">
+                            <svg class="honeycell--blue" viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <figure alt="icon honey cell" class="nav-icon nav-icon--menu nav-icon--active">
+                            <svg class="honeycell--pink honeycell--pink-filter honeycell--invisible"
+                                viewBox="0 0 144.08 170.64">
+                                <use href="#honey-cell">
+                            </svg>
+                        </figure>
+                        <span>контакты</span>
+                    </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main--industrial">
+
+        <section class="hero-all hero--industrial">
+            <img srcset="img/prom_1.jpg 2000w,
+                        img/prom_1@0,75x.jpg 1500w,
+                        img/prom_1@0,5x.jpg 1000w,
+                        img/prom_1@0,25x.jpg 498w
+                        " 
+                        sizes="92vw" src="img/prom_1.jpg" alt="Industrial LED lights" class="hero-image--industrial hero-all__image">
+            <img src="img/svg/rect-hero--blue.svg" alt="" class="home__decor-back hero-all__decor-back">
+            <figure class="hero-all__back"></figure>
+            <header class="hero-all__header">
+                <h1 class="heading-1 heading-1--industrial">Промышленное освещение</h1>
+            </header>
+            <p class="paragraph hero-all__subheading">
+                Самым выгодным вложением в производство на сегодняшний день, безусловно, является полная модернизация искусственного промышленного освещения. При этом ничто так быстро не оправдывает финансовые вложения, как замена ламп накаливания на светодиодные светильники. Причём наибольший эффект от такого апгрейда достигается только при полной тотальной замене всех приборов освещения во всех помещениях.
+            </p>
+            <figure class="hero-decor hero-all__decor">
+                <img src="img/svg/cell-fill--light-blue.svg" alt="Honeycell blue" class="hero-decor__img">
+                <img src="img/svg/cell-no-fill--white.svg" alt="Honeycell white" class="hero-decor__img">
+                <img src="img/svg/cell-fill--pink.svg" alt="Honeycell white" class="hero-decor__img">
+            </figure>
+        </section>
+
+        <section class="usage presentation">
+            <img srcset="img/prom_2.jpg 2000w,
+                        img/prom_2@0,75x.jpg 1500w,
+                        img/prom_2@0,5x.jpg 1000w,
+                        img/prom_2@0,25x.jpg 498w
+                        " 
+                        sizes="92vw" src="img/prom_2.jpg" alt="Abstraction LED lights"
+                class="presentation__background-image">
+            <figure class="hero-all__back"></figure>
+            <img src="img/svg/rect-left-decor--blue.svg" alt="background decor" class="presentation__background-decor">
+            <img src="img/svg/cell-no-fill--white.svg" alt="Honeycell transparent" class="presentation__decor-honeycell">
+            <img src="img/svg/cell-fill--dark-blue.svg" alt="Honeycell light blue" class="presentation__decor-honeycell">
+            <p class="paragraph presentation-subheading">
+                Всем уже давно известно, что светодиодные источники искусственного освещения имеют срок службы до двадцати пяти лет и более. Учитывая, что конструкция фундаментального источника светодиода практически имеет бесконечную наработку на отказ, концепция использования светильника имеет форму «поставил и забыл». И здесь сразу прослеживается реальная экономия на ремонте и замене перегоревших ламп и сопутствующих механизмов, да и самих человеческих ресурсах для этого.
+            </p>
+        </section>
+        <section class="benefits">
+            <header class="section-header">
+                <h2 class="heading-2">Выгода замены на светодиоды</h2>
+            </header>
+            <p class="paragraph">
+                Гораздо сильнее экономия проявляется в конечной стоимости затрат электроэнергии. Всем известно, что светодиодное освещение способно экономить до девяносто процентов электроэнергии. Возникает такой эффект за счёт отсутствия нагревательных элементов. Только у самых мощных уличных светильников можно увидеть теплоотводящие радиаторы. Но мощность светового потока такого светильника в сотни раз больше, чем у обычных ламп. Ведь более восьмидесяти процентов электричества в лампе накаливания уходит в тепло, излучаемое вольфрамовой нитью, которая и работает нагревательным элементом.
+            </p>
+            <div class="benefits-features">
+                <figure class="benefits-figure">
+                    <img src="img/svg/wallet.svg" alt="" class="benefits-figure__image">
+                    <figcaption class="benefits-figure__text">
+                        <p class="paragraph">
+                            Несложно посчитать экономию от такой модернизации: одна лампочка накаливания мощностью в сто ватт, при округленном тарифе 4 рубля/квт.ч потребляет за десяти часовой рабочий день как раз 4 рубля. В месяц - это восемьдесят рублей, в год выходит приблизительно тысяча рублей. Когда светодиодная лампа за такой же период нагорает на сто рублей. Это в масштабах одной лампы. А если расчет перенести на все производство, то получится колоссальная сумма.
+                        </p>
+                    </figcaption>
+                </figure>
+                <figure class="benefits-figure">
+                    <img src="img/svg/thermo.svg" alt="" class="benefits-figure__image">
+                    <figcaption class="benefits-figure__text">
+                        <p class="paragraph">
+                            Несложно посчитать экономию от такой модернизации: одна лампочка накаливания мощностью в сто ватт, при округленном тарифе 4 рубля/квт.ч потребляет за десяти часовой рабочий день как раз 4 рубля. В месяц - это восемьдесят рублей, в год выходит приблизительно тысяча рублей. Когда светодиодная лампа за такой же период нагорает на сто рублей. Это в масштабах одной лампы. А если расчет перенести на все производство, то получится колоссальная сумма.
+                        </p>
+                    </figcaption>
+                </figure>
+            </div>
+            
+        </section>
+
+        <section class="instances instances--industrial">
+            <header class="instances-header">
+                <h2 class="heading-2">Модели светильников</h2>
+            </header>
+            <ul class="instances-list instances-list--industrial">
+                <li class="instance-item">
+                    <figure class="instance-decor instance-decor--left">
+                        <svg class="line--instances" viewBox="0 0 354.5 61.95">
+                            <use href="#decor-instance"></use>
+                        </svg>
+                    </figure>
+                    <a href="pl-2.html" class="instance-link">
+                        <figure class="instance-figure">
+                            <img srcset="
+                                        img/PL-2-1@0,75x.png 1500w,
+                                        img/PL-2-1@0,5x.png 100w,
+                                        img/PL-2-1@0,25x.png 529w
+                                        "
+                                        sizes="
+                                        (min-width: 1920px) 28vw,
+                                        (min-width: 1025px) and (max-width: 1919px) 33vw,
+                                        (min-width: 769px) and (max-width: 1024px) 36vw,
+                                        (min-width: 600px) and (max-width: 768px) 42vw,
+                                        (max-width: 599px) 60vw
+                                        "
+                                        src="img/PL-2-1@0,75x.png" alt="Industrial light Pl-2"
+                                class="instance-image">
+                            <figcaption class="instance-caption">
+                                <h3 class="heading-3 instance-title">Промышленный светильник PL2</h3>
+                                <p class="paragraph instance-subtitle">60 - 160 Вт</p>
+                                <p class="paragraph instance-more">читать подробно</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="instance-item">
+                    <figure class="instance-decor instance-decor--right">
+                        <svg class="line--instances" viewBox="0 0 354.5 61.95">
+                            <use href="#decor-instance"></use>
+                        </svg>
+                    </figure>
+                    <a href="pl-3.html" class="instance-link">
+                        <figure class="instance-figure">
+                            <img srcset="
+                                        img/PL-3-1@0,75x.png 1500w,
+                                        img/PL-3-1@0,5x.png 100w,
+                                        img/PL-3-1@0,25x.png 529w
+                                        " 
+                                        sizes="
+                                        (min-width: 1920px) 28vw,
+                                        (min-width: 1025px) and (max-width: 1919px) 33vw,
+                                        (min-width: 769px) and (max-width: 1024px) 36vw,
+                                        (min-width: 600px) and (max-width: 768px) 42vw,
+                                        (max-width: 599px) 60vw
+                                        " 
+                                        src="img/PL-3-1@0,75x.png" alt="Industrial light Pl-3" class="instance-image">
+                            <figcaption class="instance-caption">
+                                <h3 class="heading-3 instance-title">Промышленный светильник PL3</h3>
+                                <p class="paragraph instance-subtitle">150 - 300 Вт</p>
+                                <p class="paragraph instance-more">читать подробно</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="instance-item">
+                    <figure class="instance-decor instance-decor--left">
+                        <svg class="line--instances" viewBox="0 0 354.5 61.95">
+                            <use href="#decor-instance"></use>
+                        </svg>
+                    </figure>
+                    <figure class="instance-decor instance-decor--right ">
+                        <svg class="line--instances" viewBox="0 0 354.5 61.95">
+                            <use href="#decor-instance"></use>
+                        </svg>
+                    </figure>
+                    <a href="plex-1.html" class="instance-link">
+                        <figure class="instance-figure">
+                            <img srcset="
+                                        img/PL-EX-1-1@0,75x.png 1500w,
+                                        img/PL-EX-1-1@0,5x.png 100w,
+                                        img/PL-EX-1-1@0,25x.png 529w
+                                        " 
+                                        sizes="
+                                        (min-width: 1920px) 28vw,
+                                        (min-width: 1025px) and (max-width: 1919px) 33vw,
+                                        (min-width: 769px) and (max-width: 1024px) 36vw,
+                                        (min-width: 600px) and (max-width: 768px) 42vw,
+                                        (max-width: 599px) 60vw
+                                        " 
+                                        src="img/PL-EX-1-1@0,75x.png" alt="Industrial light Pl-Ex-1" class="instance-image">
+                            <figcaption class="instance-caption">
+                                <h3 class="heading-3 instance-title">Промышленный светильник PL-Ex-1</h3>
+                                <p class="paragraph instance-subtitle">20 - 30 Вт</p>
+                                <p class="paragraph instance-more">читать подробно</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="instance-item">
+                    <figure class="instance-decor instance-decor--left">
+                        <svg class="line--instances" viewBox="0 0 354.5 61.95">
+                            <use href="#decor-instance"></use>
+                        </svg>
+                    </figure>
+                    <a href="plex-2.html" class="instance-link">
+                        <figure class="instance-figure">
+                            <img srcset="
+                                        img/PL-EX-2-1@0,75x.png 1500w,
+                                        img/PL-EX-2-1@0,5x.png 100w,
+                                        img/PL-EX-2-1@0,25x.png 529w
+                                        "
+                                        sizes="
+                                        (min-width: 1920px) 28vw,
+                                        (min-width: 1025px) and (max-width: 1919px) 33vw,
+                                        (min-width: 769px) and (max-width: 1024px) 36vw,
+                                        (min-width: 600px) and (max-width: 768px) 42vw,
+                                        (max-width: 599px) 60vw
+                                        "
+                                        src="img/PL-EX-2-1@0,75x.png" alt="Industrial light Pl-Ex-2" class="instance-image">
+                            <figcaption class="instance-caption">
+                                <h3 class="heading-3 instance-title">Промышленный светильник PL-Ex-1</h3>
+                                <p class="paragraph instance-subtitle">50 - 100 Вт</p>
+                                <p class="paragraph instance-more">читать подробно</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+                <li class="instance-item">
+                    <figure class="instance-decor instance-decor--right">
+                        <svg class="line--instances" viewBox="0 0 354.5 61.95">
+                            <use href="#decor-instance"></use>
+                        </svg>
+                    </figure>
+                    <a href="plex-3.html" class="instance-link">
+                        <figure class="instance-figure">
+                            <img srcset="
+                                        img/PL-EX-3-1@0,75x.png 1500w,
+                                        img/PL-EX-3-1@0,5x.png 100w,
+                                        img/PL-EX-3-1@0,25x.png 529w
+                                        "
+                                        sizes="
+                                        (min-width: 1920px) 28vw,
+                                        (min-width: 1025px) and (max-width: 1919px) 33vw,
+                                        (min-width: 769px) and (max-width: 1024px) 36vw,
+                                        (min-width: 600px) and (max-width: 768px) 42vw,
+                                        (max-width: 599px) 60vw
+                                        "
+                                        src="img/PL-EX-3-1@0,75x.png" alt="Industrial light Pl-Ex-3" class="instance-image">
+                            <figcaption class="instance-caption">
+                                <h3 class="heading-3 instance-title">Промышленный светильник PL-Ex-3</h3>
+                                <p class="paragraph instance-subtitle">20 - 30 Вт</p>
+                                <p class="paragraph instance-more">читать подробно</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <nav class="nav-footer">
+            <ul class="nav-list nav-list--footer footer-navigation">
+                <li class="nav-item nav-item--footer"><a href="index.html" class="nav-link nav-link--footer">Главная</a>
+                </li>
+                <li class="nav-item nav-item--footer"><a href="about.html" class="nav-link nav-link--footer">О компании</a>
+                </li>
+                <li class="nav-item nav-item--footer"><a href="services.html" class="nav-link nav-link--footer">Услуги</a>
+                </li>
+                <li class="nav-item nav-item--footer"><a href="contacts.html" class="nav-link nav-link--footer">Контакты</a>
+                </li>
+                <li class="nav-item nav-item--footer"><a href="street-light.html" class="nav-link nav-link--footer">Уличное
+                        освещение</a></li>
+                <li class="nav-item nav-item--footer"><a href="industrial-light.html"
+                        class="nav-link nav-link--footer">Промышленное освещение</a></li>
+                <li class="nav-item nav-item--footer"><a href="phito-light.html"
+                        class="nav-link nav-link--footer">Фитосвет</a></li>
+                <li class="nav-item nav-item--footer"><a href="stands.html" class="nav-link nav-link--footer">Опоры уличного
+                        освещения</a></li>
+                <li class="nav-item nav-item--footer"><a href="control-system.html"
+                        class="nav-link nav-link--footer">Автоматизированная система управления освещением</a></li>
+            </ul>
+        </nav>
+        <address class="footer-address">
+            <span class="footer-text">Адрес: 150044, г.Ярославль пр.Октября, д.93</span>
+            <span class="footer-text"><a class="nav-link nav-link--footer" href=tel:+74852663720" class="footer-link">+7
+                    (4852) 66-37-20</a></span>
+            <span class="footer-text"><a class="nav-link nav-link--footer" href="mailto:info@setolight.ru"
+                    class="footer-link">info@setolight.ru</a></span>
+        </address>
+        <figure class="footer-line"></figure>
+        <div class="footer-copyright">
+            <p class="footer-text">&copy; 2017 - 2019 сэтогрупп</p>
+        </div>
+    
+    </footer>
+
+</body>
+
+</html>
